@@ -20,7 +20,7 @@ class _CompassPageWidgetState extends State<CompassPageWidget> {
       backgroundColor: FlutterFlowTheme.secondaryColor,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(14, 0, 14, 0),
+          padding: EdgeInsetsDirectional.fromSTEB(14, 20, 14, 0),
           child: Material(
             color: Colors.transparent,
             elevation: 10,
