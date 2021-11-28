@@ -32,11 +32,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Card(
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                color: Color(0xFF50B144),
-                elevation: 10,
-                shape: RoundedRectangleBorder(
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.15,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.primaryColor,
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Row(
@@ -47,7 +47,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       alignment: AlignmentDirectional(0, 0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
