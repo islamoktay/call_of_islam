@@ -1,4 +1,4 @@
-# ahmet
+# prayer_times_project
 
 A new Flutter project.
 

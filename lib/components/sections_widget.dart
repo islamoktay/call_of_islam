@@ -31,13 +31,13 @@ class _SectionsWidgetState extends State<SectionsWidget> {
             width: 100,
             height: 100,
             decoration: BoxDecoration(
-              color: Color(0xFF8BC34A),
+              color: FlutterFlowTheme.primaryColor,
               borderRadius: BorderRadius.circular(30),
             ),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
               child: Image.asset(
-                'assets/images/best-kaaba-png-clipart-11.png',
+                'assets/images/df3hg_',
                 fit: BoxFit.scaleDown,
               ),
             ),

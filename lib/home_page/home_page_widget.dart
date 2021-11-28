@@ -1,7 +1,10 @@
+import '../compass_page/compass_page_widget.dart';
 import '../components/namaz_vakitleri_text_widget.dart';
 import '../components/sections_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../monthly_pray_times_page/monthly_pray_times_page_widget.dart';
+import '../settings_page/settings_page_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,7 +23,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: Color(0xFF146261),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(14, 0, 14, 0),
@@ -94,80 +97,87 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   borderRadius: BorderRadius.circular(30),
                 ),
               ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.55,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.primaryColor,
-                  borderRadius: BorderRadius.circular(30),
+              Material(
+                color: Colors.transparent,
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: Color(0x01EEEEEE),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                        child: AutoSizeText(
-                          'Namaz Vakitleri',
-                          textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: Colors.white,
-                            fontSize: 18,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 0.55,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.primaryColor,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: Color(0x01EEEEEE),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                          child: AutoSizeText(
+                            'Namaz Vakitleri',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Poppins',
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: NamazVakitleriTextWidget(
-                        vakitIsmi: 'Güneş',
-                        vakitSaati: '05:00',
+                      Expanded(
+                        flex: 2,
+                        child: NamazVakitleriTextWidget(
+                          vakitIsmi: 'Güneş',
+                          vakitSaati: '05:00',
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: NamazVakitleriTextWidget(
-                        vakitIsmi: 'Sabah',
-                        vakitSaati: '06:00',
+                      Expanded(
+                        flex: 2,
+                        child: NamazVakitleriTextWidget(
+                          vakitIsmi: 'Sabah',
+                          vakitSaati: '06:00',
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: NamazVakitleriTextWidget(
-                        vakitIsmi: 'Öğlen',
-                        vakitSaati: '12:00',
+                      Expanded(
+                        flex: 2,
+                        child: NamazVakitleriTextWidget(
+                          vakitIsmi: 'Öğlen',
+                          vakitSaati: '12:00',
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: NamazVakitleriTextWidget(
-                        vakitIsmi: 'İkindi',
-                        vakitSaati: '16:00',
+                      Expanded(
+                        flex: 2,
+                        child: NamazVakitleriTextWidget(
+                          vakitIsmi: 'İkindi',
+                          vakitSaati: '16:00',
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: NamazVakitleriTextWidget(
-                        vakitIsmi: 'Akşam',
-                        vakitSaati: '18:00',
+                      Expanded(
+                        flex: 2,
+                        child: NamazVakitleriTextWidget(
+                          vakitIsmi: 'Akşam',
+                          vakitSaati: '18:00',
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: NamazVakitleriTextWidget(
-                        vakitIsmi: 'Yatsı',
-                        vakitSaati: '21:00',
-                      ),
-                    )
-                  ],
+                      Expanded(
+                        flex: 2,
+                        child: NamazVakitleriTextWidget(
+                          vakitIsmi: 'Yatsı',
+                          vakitSaati: '21:00',
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
               Container(
@@ -189,14 +199,44 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ),
                   scrollDirection: Axis.vertical,
                   children: [
-                    SectionsWidget(
-                      text: 'Prayer Times',
+                    InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CompassPageWidget(),
+                          ),
+                        );
+                      },
+                      child: SectionsWidget(
+                        text: 'Qibla Finder',
+                      ),
                     ),
-                    SectionsWidget(
-                      text: 'Qibla Finder',
+                    InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MonthlyPrayTimesPageWidget(),
+                          ),
+                        );
+                      },
+                      child: SectionsWidget(
+                        text: 'Prayer Times',
+                      ),
                     ),
-                    SectionsWidget(
-                      text: 'Pray',
+                    InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SettingsPageWidget(),
+                          ),
+                        );
+                      },
+                      child: SectionsWidget(
+                        text: 'Settings',
+                      ),
                     )
                   ],
                 ),
