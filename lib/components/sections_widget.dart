@@ -2,7 +2,6 @@ import '../flutter_flow/flutter_flow_theme.dart';
 
 import 'package:flutter/material.dart';
 
-
 class SectionsWidget extends StatefulWidget {
   SectionsWidget({
     Key key,
@@ -28,8 +27,8 @@ class _SectionsWidgetState extends State<SectionsWidget> {
             borderRadius: BorderRadius.circular(30),
           ),
           child: Container(
-            width: 100,
-            height: 100,
+            width: 95,
+            height: 95,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.primaryColor,
               borderRadius: BorderRadius.circular(30),
@@ -43,13 +42,7 @@ class _SectionsWidgetState extends State<SectionsWidget> {
             ),
           ),
         ),
-        Container(
-          width: 100,
-          height: 12,
-          decoration: BoxDecoration(
-            color: Color(0x00EEEEEE),
-          ),
-        ),
+        SizedBox(height: 5),
         Text(
           widget.text,
           style: FlutterFlowTheme.bodyText1,

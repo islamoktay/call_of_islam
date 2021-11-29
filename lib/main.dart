@@ -1,8 +1,7 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:prayer_times_project/home_page/home_page_widget.dart';
-import 'flutter_flow/flutter_flow_theme.dart';
+
+import 'package:prayer_times_project/onboarding_welcome/onboarding_welcome_widget.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'prayerTimesProject',
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: HomePageWidget(),
+      home: OnboardingWelcomeWidget(),
     );
   }
 }
