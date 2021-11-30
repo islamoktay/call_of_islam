@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OnboardingWelcomeWidget extends StatefulWidget {
-  OnboardingWelcomeWidget({Key key}) : super(key: key);
+  const OnboardingWelcomeWidget({Key key}) : super(key: key);
 
   @override
   _OnboardingWelcomeWidgetState createState() =>
