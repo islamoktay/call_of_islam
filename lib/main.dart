@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
-import 'package:prayer_times_project/onboarding_welcome/onboarding_welcome_widget.dart';
+import 'package:prayer_times_project/screens/onboarding_welcome/onboarding_welcome_widget.dart';
 
 void main() {
   runApp(MyApp());

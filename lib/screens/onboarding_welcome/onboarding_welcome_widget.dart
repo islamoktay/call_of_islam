@@ -1,10 +1,10 @@
-import '../flutter_flow/flutter_flow_animations.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:prayer_times_project/services/flutter_flow_animations.dart';
+import 'package:prayer_times_project/services/flutter_flow_theme.dart';
+import 'package:prayer_times_project/services/flutter_flow_widgets.dart';
+
 import '../home_page/home_page_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class OnboardingWelcomeWidget extends StatefulWidget {
   OnboardingWelcomeWidget({Key key}) : super(key: key);
@@ -120,6 +120,7 @@ class _OnboardingWelcomeWidgetState extends State<OnboardingWelcomeWidget>
               onPressed: () async {
                 setState(() => _loadingButton = true);
                 try {
+                  //  await Geolocator.requestPermission();
                   await Navigator.push(
                     context,
                     MaterialPageRoute(

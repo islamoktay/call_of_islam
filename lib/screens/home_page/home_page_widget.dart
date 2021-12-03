@@ -1,13 +1,14 @@
+import 'package:adhan/adhan.dart';
+import 'package:prayer_times_project/components/namaz_vakitleri_text_widget.dart';
+import 'package:prayer_times_project/components/sections_widget.dart';
+import 'package:prayer_times_project/services/flutter_flow_theme.dart';
+import 'package:prayer_times_project/services/location_service.dart';
+
 import '../compass_page/compass_page_widget.dart';
-import '../components/namaz_vakitleri_text_widget.dart';
-import '../components/sections_widget.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 import '../monthly_pray_times_page/monthly_pray_times_page_widget.dart';
 import '../settings_page/settings_page_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HomePageWidget extends StatefulWidget {
   HomePageWidget({Key key}) : super(key: key);
@@ -19,6 +20,9 @@ class HomePageWidget extends StatefulWidget {
 class _HomePageWidgetState extends State<HomePageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  final prayerTimes = PrayerTimes.today(
+      Coordinates(LocationService.latitude, LocationService.longitude),
+      CalculationMethod.karachi.getParameters());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +64,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Asr 17:09',
+                              'Asr ${prayerTimes.asr}',
                               textAlign: TextAlign.start,
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Poppins',

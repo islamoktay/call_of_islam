@@ -1,6 +1,5 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-
 import 'package:flutter/material.dart';
+import 'package:prayer_times_project/services/flutter_flow_theme.dart';
 
 class CompassPageWidget extends StatefulWidget {
   CompassPageWidget({Key key}) : super(key: key);

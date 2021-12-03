@@ -21,23 +21,21 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  adhan: ^1.1.16
+  auto_size_text: null
+  cached_network_image: ^3.1.0
+  cupertino_icons: ^1.0.0
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  auto_size_text:
-  cached_network_image: ^3.1.0
-  font_awesome_flutter:
+  font_awesome_flutter: null
+  geolocator: ^8.0.0
   google_fonts: ^2.1.0
-  intl:
-  page_transition:
-  timeago:
-  url_launcher:
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.0
+  intl: null
+  page_transition: null
+  timeago: null
+  url_launcher: null
 
 dev_dependencies:
   flutter_launcher_icons: ^0.9.1
@@ -45,17 +43,14 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
 flutter_icons:
   android: true
   ios: true
   remove_alpha_ios: true
   image_path: 'assets/images/app_launcher_icon.png'
 
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter.
 flutter:
 
@@ -72,13 +67,10 @@ flutter:
     - assets/audios/
     - assets/lottie_animations/
     - assets/rive_animations/
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a

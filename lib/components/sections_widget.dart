@@ -1,6 +1,5 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-
 import 'package:flutter/material.dart';
+import 'package:prayer_times_project/services/flutter_flow_theme.dart';
 
 class SectionsWidget extends StatefulWidget {
   SectionsWidget({
@@ -28,7 +27,7 @@ class _SectionsWidgetState extends State<SectionsWidget> {
           ),
           child: Container(
             width: 95,
-            height: 95,
+            height: 80,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.primaryColor,
               borderRadius: BorderRadius.circular(30),
@@ -36,7 +35,7 @@ class _SectionsWidgetState extends State<SectionsWidget> {
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
               child: Image.asset(
-                'assets/images/df3hg_',
+                'assets/images/pngegg.png',
                 fit: BoxFit.scaleDown,
               ),
             ),
