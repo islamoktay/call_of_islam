@@ -2,6 +2,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:prayer_times_project/services/flutter_flow_animations.dart';
 import 'package:prayer_times_project/services/flutter_flow_theme.dart';
 import 'package:prayer_times_project/services/flutter_flow_widgets.dart';
+import 'package:prayer_times_project/services/location_service.dart';
 
 import '../home_page/home_page_widget.dart';
 import 'package:flutter/material.dart';
@@ -120,7 +121,9 @@ class _OnboardingWelcomeWidgetState extends State<OnboardingWelcomeWidget>
               onPressed: () async {
                 setState(() => _loadingButton = true);
                 try {
-                  //  await Geolocator.requestPermission();
+                  await Geolocator.requestPermission();
+                  await LocationService.getCurrentLocation();
+
                   await Navigator.push(
                     context,
                     MaterialPageRoute(

@@ -64,7 +64,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Asr ${prayerTimes.asr}',
+                              'Asr ${prayerTimes.asr.toLocal().hour} : ${prayerTimes.asr.toLocal().minute}',
                               textAlign: TextAlign.start,
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Poppins',
@@ -145,42 +145,48 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         flex: 2,
                         child: NamazVakitleriTextWidget(
                           vakitIsmi: 'Güneş',
-                          vakitSaati: '05:00',
+                          vakitSaati:
+                              '${prayerTimes.fajr.toLocal().hour} : ${prayerTimes.fajr.toLocal().minute}',
                         ),
                       ),
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
                           vakitIsmi: 'Sabah',
-                          vakitSaati: '06:00',
+                          vakitSaati:
+                              '${prayerTimes.sunrise.toLocal().hour} : ${prayerTimes.sunrise.toLocal().minute}',
                         ),
                       ),
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
                           vakitIsmi: 'Öğlen',
-                          vakitSaati: '12:00',
+                          vakitSaati:
+                              '${prayerTimes.dhuhr.toLocal().hour} : ${prayerTimes.dhuhr.toLocal().minute}',
                         ),
                       ),
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
                           vakitIsmi: 'İkindi',
-                          vakitSaati: '16:00',
+                          vakitSaati:
+                              '${prayerTimes.asr.toLocal().hour} : ${prayerTimes.asr.toLocal().minute}',
                         ),
                       ),
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
                           vakitIsmi: 'Akşam',
-                          vakitSaati: '18:00',
+                          vakitSaati:
+                              '${prayerTimes.maghrib.toLocal().hour} : ${prayerTimes.maghrib.toLocal().minute}',
                         ),
                       ),
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
                           vakitIsmi: 'Yatsı',
-                          vakitSaati: '21:00',
+                          vakitSaati:
+                              '${prayerTimes.isha.toLocal().hour} : ${prayerTimes.isha.toLocal().minute}',
                         ),
                       )
                     ],
