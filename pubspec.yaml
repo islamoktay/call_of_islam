@@ -30,6 +30,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   font_awesome_flutter: null
+  geocoding: ^2.0.1
   geolocator: ^8.0.0
   google_fonts: ^2.1.0
   intl: null

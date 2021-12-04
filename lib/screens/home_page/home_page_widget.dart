@@ -3,7 +3,7 @@ import 'package:prayer_times_project/components/namaz_vakitleri_text_widget.dart
 import 'package:prayer_times_project/components/sections_widget.dart';
 import 'package:prayer_times_project/services/flutter_flow_theme.dart';
 import 'package:prayer_times_project/services/location_service.dart';
-
+import 'package:geocoding/geocoding.dart';
 import '../compass_page/compass_page_widget.dart';
 import '../monthly_pray_times_page/monthly_pray_times_page_widget.dart';
 import '../settings_page/settings_page_widget.dart';
@@ -19,10 +19,32 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  int durationFinal;
+  @override
+  void initState() {
+    getAddressFromLatLong();
+    super.initState();
+  }
+
+  Future<void> getAddressFromLatLong() async {
+    List<Placemark> placemarks = await placemarkFromCoordinates(
+        LocationService.latitude, LocationService.longitude);
+    print(placemarks[0]);
+  }
 
   final prayerTimes = PrayerTimes.today(
       Coordinates(LocationService.latitude, LocationService.longitude),
       CalculationMethod.karachi.getParameters());
+  Future buildLocationName() async {
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(
+          LocationService.latitude, LocationService.longitude);
+      print(placemarks[1]);
+    } catch (e) {
+      print("Error occured: $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +86,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Asr ${prayerTimes.asr.toLocal().hour} : ${prayerTimes.asr.toLocal().minute}',
+                              buildHeaderCardText(),
                               textAlign: TextAlign.start,
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Poppins',
@@ -73,14 +95,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                             ),
                             Text(
-                              '1 hour 42 Min left',
+                              buildStaticCountDown(),
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Poppins',
                                 color: FlutterFlowTheme.tertiaryColor,
                               ),
                             ),
                             Text(
-                              'New Yourk,USA',
+                              'buildLocationName()',
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Poppins',
                                 color: FlutterFlowTheme.tertiaryColor,
@@ -144,49 +166,43 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
-                          vakitIsmi: 'Güneş',
-                          vakitSaati:
-                              '${prayerTimes.fajr.toLocal().hour} : ${prayerTimes.fajr.toLocal().minute}',
+                          vakitIsmi: 'Fajr',
+                          vakitSaati: buildTimeOfPrayer(prayerTimes.fajr),
                         ),
                       ),
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
-                          vakitIsmi: 'Sabah',
-                          vakitSaati:
-                              '${prayerTimes.sunrise.toLocal().hour} : ${prayerTimes.sunrise.toLocal().minute}',
+                          vakitIsmi: 'Sunrise',
+                          vakitSaati: buildTimeOfPrayer(prayerTimes.sunrise),
                         ),
                       ),
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
-                          vakitIsmi: 'Öğlen',
-                          vakitSaati:
-                              '${prayerTimes.dhuhr.toLocal().hour} : ${prayerTimes.dhuhr.toLocal().minute}',
+                          vakitIsmi: 'Dhuhr',
+                          vakitSaati: buildTimeOfPrayer(prayerTimes.dhuhr),
                         ),
                       ),
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
-                          vakitIsmi: 'İkindi',
-                          vakitSaati:
-                              '${prayerTimes.asr.toLocal().hour} : ${prayerTimes.asr.toLocal().minute}',
+                          vakitIsmi: 'Asr',
+                          vakitSaati: buildTimeOfPrayer(prayerTimes.asr),
                         ),
                       ),
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
-                          vakitIsmi: 'Akşam',
-                          vakitSaati:
-                              '${prayerTimes.maghrib.toLocal().hour} : ${prayerTimes.maghrib.toLocal().minute}',
+                          vakitIsmi: 'Maghrib',
+                          vakitSaati: buildTimeOfPrayer(prayerTimes.maghrib),
                         ),
                       ),
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
-                          vakitIsmi: 'Yatsı',
-                          vakitSaati:
-                              '${prayerTimes.isha.toLocal().hour} : ${prayerTimes.isha.toLocal().minute}',
+                          vakitIsmi: 'Isha',
+                          vakitSaati: buildTimeOfPrayer(prayerTimes.isha),
                         ),
                       )
                     ],
@@ -252,5 +268,82 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         ),
       ),
     );
+  }
+
+  buildStaticCountDown() {
+    DateTime nowTime = DateTime.now().toLocal();
+    if (nowTime.isBefore(prayerTimes.fajr)) {
+      List<int> itemsOfTime = buildDuration(nowTime, prayerTimes.fajr);
+      return '${itemsOfTime[0] <= 0 ? '' : '${itemsOfTime[0]} Hour '}' +
+          '${itemsOfTime[1] < 10 ? '0${itemsOfTime[1]} Min Left' : '${itemsOfTime[1]} Min Left'}';
+    } else if (nowTime.isBefore(prayerTimes.sunrise)) {
+      List<int> itemsOfTime = buildDuration(nowTime, prayerTimes.sunrise);
+      return '${itemsOfTime[0] <= 0 ? '' : '${itemsOfTime[0]} Hour '}' +
+          '${itemsOfTime[1] < 10 ? '0${itemsOfTime[1]} Min Left' : '${itemsOfTime[1]} Min Left'}';
+    } else if (nowTime.isBefore(prayerTimes.dhuhr)) {
+      List<int> itemsOfTime = buildDuration(nowTime, prayerTimes.dhuhr);
+      return '${itemsOfTime[0] <= 0 ? '' : '${itemsOfTime[0]} Hour '}' +
+          '${itemsOfTime[1] < 10 ? '0${itemsOfTime[1]} Min Left' : '${itemsOfTime[1]} Min Left'}';
+    } else if (nowTime.isBefore(prayerTimes.asr)) {
+      List<int> itemsOfTime = buildDuration(nowTime, prayerTimes.asr);
+      return '${itemsOfTime[0] <= 0 ? '' : '${itemsOfTime[0]} Hour '}' +
+          '${itemsOfTime[1] < 10 ? '0${itemsOfTime[1]} Min Left' : '${itemsOfTime[1]} Min Left'}';
+    } else if (nowTime.isBefore(prayerTimes.maghrib)) {
+      List<int> itemsOfTime = buildDuration(nowTime, prayerTimes.maghrib);
+      return '${itemsOfTime[0] <= 0 ? '' : '${itemsOfTime[0]} Hour '}' +
+          '${itemsOfTime[1] < 10 ? '0${itemsOfTime[1]} Min Left' : '${itemsOfTime[1]} Min Left'}';
+    } else if (nowTime.isBefore(prayerTimes.isha)) {
+      List<int> itemsOfTime = buildDuration(nowTime, prayerTimes.isha);
+      return '${itemsOfTime[0] <= 0 ? '' : '${itemsOfTime[0]} Hour '}' +
+          '${itemsOfTime[1] < 10 ? '0${itemsOfTime[1]} Min Left' : '${itemsOfTime[1]} Min Left'}';
+    }
+  }
+
+  buildDuration(DateTime nowTime, DateTime prayTime) {
+    List<int> results = [];
+    int durationOfNow = buildDurationSecondsForDateTimes(nowTime);
+    int durationOfEnd = buildDurationSecondsForDateTimes(prayTime);
+
+    durationFinal = durationOfEnd - durationOfNow;
+    int hourOfitem = (durationFinal ~/ (60 * 60));
+    results.add(hourOfitem);
+    int minuteOfitem = (durationFinal - (hourOfitem * 60 * 60)) ~/ 60;
+    results.add(minuteOfitem);
+
+    int secondOfitem =
+        (durationFinal - (minuteOfitem * 60) - (hourOfitem * 60 * 60));
+    results.add(secondOfitem);
+
+    return results;
+  }
+
+  int buildDurationSecondsForDateTimes(DateTime dateTime) {
+    int hourOfItem = dateTime.hour;
+    int minuteOfitem = dateTime.minute;
+    int secondsOfitem = dateTime.second;
+    int durationOfitems =
+        ((hourOfItem * 60 * 60) + (minuteOfitem * 60) + (secondsOfitem));
+    return durationOfitems;
+  }
+
+  buildHeaderCardText() {
+    DateTime nowTime = DateTime.now().toLocal();
+    if (nowTime.isBefore(prayerTimes.fajr)) {
+      return 'Fajr ' + buildTimeOfPrayer(prayerTimes.fajr);
+    } else if (nowTime.isBefore(prayerTimes.sunrise)) {
+      return 'Sunrise ' + buildTimeOfPrayer(prayerTimes.sunrise);
+    } else if (nowTime.isBefore(prayerTimes.dhuhr)) {
+      return 'Dhuhr ' + buildTimeOfPrayer(prayerTimes.dhuhr);
+    } else if (nowTime.isBefore(prayerTimes.asr)) {
+      return 'Asr ' + buildTimeOfPrayer(prayerTimes.asr);
+    } else if (nowTime.isBefore(prayerTimes.maghrib)) {
+      return 'Maghrib ' + buildTimeOfPrayer(prayerTimes.maghrib);
+    } else if (nowTime.isBefore(prayerTimes.isha)) {
+      return 'Isha ' + buildTimeOfPrayer(prayerTimes.isha);
+    }
+  }
+
+  buildTimeOfPrayer(DateTime timeOfPrayer) {
+    return '${timeOfPrayer.toLocal().hour < 10 ? "0${timeOfPrayer.toLocal().hour}" : "${timeOfPrayer.toLocal().hour}"} : ${timeOfPrayer.toLocal().minute < 10 ? "0${timeOfPrayer.toLocal().minute}" : "${timeOfPrayer.toLocal().minute}"}';
   }
 }
