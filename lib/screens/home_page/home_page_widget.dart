@@ -23,6 +23,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   int hourOfRemain, minuteOfRemain;
   Timer timer;
+  String nameOfCity, nameOfCountry;
   @override
   void initState() {
     super.initState();
@@ -36,10 +37,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       CalculationMethod.muslim_world_league.getParameters());
   Future buildLocationName() async {
     try {
+      setState(() {});
       List<Placemark> placemarks = await placemarkFromCoordinates(
-          52.519990562836504, 11.506658100460866);
-
-      print(placemarks[0]);
+          LocationService.latitude, LocationService.longitude);
+      nameOfCountry = placemarks[0].country;
+      nameOfCity = placemarks[0].administrativeArea;
     } catch (e) {
       print("Error occured: $e");
     }
@@ -94,7 +96,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 fontSize: 16,
                               ),
                             ),
-                            hourOfRemain != null
+                            hourOfRemain != null && minuteOfRemain != null
                                 ? Text(
                                     '$hourOfRemain Hour $minuteOfRemain Min Left',
                                     style: FlutterFlowTheme.bodyText1.override(
@@ -103,14 +105,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     ),
                                   )
                                 : Container(
-                                    height: 14,
-                                    width: 14,
+                                    height: 16,
+                                    width: 16,
                                     child: CircularProgressIndicator(
                                       color: FlutterFlowTheme.tertiaryColor,
                                     ),
                                   ),
                             Text(
-                              'buildLocationName()',
+                              buildLocationText(nameOfCity, nameOfCountry),
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Poppins',
                                 color: FlutterFlowTheme.tertiaryColor,
@@ -326,7 +328,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         return 'Sunrise ' + buildTimeOfPrayer(prayerTimes.sunrise);
         break;
       case Prayer.dhuhr:
-        return 'Dajr ' + buildTimeOfPrayer(prayerTimes.dhuhr);
+        return 'Fajr ' + buildTimeOfPrayer(prayerTimes.dhuhr);
         break;
       case Prayer.asr:
         return 'Asr ' + buildTimeOfPrayer(prayerTimes.asr);
@@ -345,5 +347,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   buildTimeOfPrayer(DateTime timeOfPrayer) {
     return '${timeOfPrayer.toLocal().hour < 10 ? "0${timeOfPrayer.toLocal().hour}" : "${timeOfPrayer.toLocal().hour}"} : ${timeOfPrayer.toLocal().minute < 10 ? "0${timeOfPrayer.toLocal().minute}" : "${timeOfPrayer.toLocal().minute}"}';
+  }
+
+  String buildLocationText(String nameOfCity, String nameOfCountry) {
+    if (nameOfCountry == null && nameOfCity == null) {
+      return '';
+    } else if (nameOfCity == null) {
+      return '$nameOfCountry';
+    } else if (nameOfCountry == null) {
+      return '$nameOfCity';
+    } else {
+      return '$nameOfCity, $nameOfCountry';
+    }
   }
 }
