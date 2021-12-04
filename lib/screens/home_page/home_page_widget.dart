@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:adhan/adhan.dart';
 import 'package:prayer_times_project/components/namaz_vakitleri_text_widget.dart';
 import 'package:prayer_times_project/components/sections_widget.dart';
@@ -19,27 +21,25 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  int durationFinal;
+  int hourOfRemain, minuteOfRemain;
+  Timer timer;
   @override
   void initState() {
-    getAddressFromLatLong();
     super.initState();
-  }
-
-  Future<void> getAddressFromLatLong() async {
-    List<Placemark> placemarks = await placemarkFromCoordinates(
-        LocationService.latitude, LocationService.longitude);
-    print(placemarks[0]);
+    timer =
+        Timer.periodic(Duration(seconds: 1), (Timer t) => calculateCountdown());
+    buildLocationName();
   }
 
   final prayerTimes = PrayerTimes.today(
       Coordinates(LocationService.latitude, LocationService.longitude),
-      CalculationMethod.karachi.getParameters());
+      CalculationMethod.muslim_world_league.getParameters());
   Future buildLocationName() async {
     try {
       List<Placemark> placemarks = await placemarkFromCoordinates(
-          LocationService.latitude, LocationService.longitude);
-      print(placemarks[1]);
+          52.519990562836504, 11.506658100460866);
+
+      print(placemarks[0]);
     } catch (e) {
       print("Error occured: $e");
     }
@@ -94,13 +94,21 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 fontSize: 16,
                               ),
                             ),
-                            Text(
-                              buildStaticCountDown(),
-                              style: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Poppins',
-                                color: FlutterFlowTheme.tertiaryColor,
-                              ),
-                            ),
+                            hourOfRemain != null
+                                ? Text(
+                                    '$hourOfRemain Hour $minuteOfRemain Min Left',
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.tertiaryColor,
+                                    ),
+                                  )
+                                : Container(
+                                    height: 14,
+                                    width: 14,
+                                    child: CircularProgressIndicator(
+                                      color: FlutterFlowTheme.tertiaryColor,
+                                    ),
+                                  ),
                             Text(
                               'buildLocationName()',
                               style: FlutterFlowTheme.bodyText1.override(
@@ -153,7 +161,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                           child: AutoSizeText(
-                            'Namaz Vakitleri',
+                            'Prayer Times',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.bodyText1.override(
                               fontFamily: 'Poppins',
@@ -270,76 +278,68 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     );
   }
 
-  buildStaticCountDown() {
+  Future<void> calculateCountdown() async {
+    setState(() {});
     DateTime nowTime = DateTime.now().toLocal();
-    if (nowTime.isBefore(prayerTimes.fajr)) {
-      List<int> itemsOfTime = buildDuration(nowTime, prayerTimes.fajr);
-      return '${itemsOfTime[0] <= 0 ? '' : '${itemsOfTime[0]} Hour '}' +
-          '${itemsOfTime[1] < 10 ? '0${itemsOfTime[1]} Min Left' : '${itemsOfTime[1]} Min Left'}';
-    } else if (nowTime.isBefore(prayerTimes.sunrise)) {
-      List<int> itemsOfTime = buildDuration(nowTime, prayerTimes.sunrise);
-      return '${itemsOfTime[0] <= 0 ? '' : '${itemsOfTime[0]} Hour '}' +
-          '${itemsOfTime[1] < 10 ? '0${itemsOfTime[1]} Min Left' : '${itemsOfTime[1]} Min Left'}';
-    } else if (nowTime.isBefore(prayerTimes.dhuhr)) {
-      List<int> itemsOfTime = buildDuration(nowTime, prayerTimes.dhuhr);
-      return '${itemsOfTime[0] <= 0 ? '' : '${itemsOfTime[0]} Hour '}' +
-          '${itemsOfTime[1] < 10 ? '0${itemsOfTime[1]} Min Left' : '${itemsOfTime[1]} Min Left'}';
-    } else if (nowTime.isBefore(prayerTimes.asr)) {
-      List<int> itemsOfTime = buildDuration(nowTime, prayerTimes.asr);
-      return '${itemsOfTime[0] <= 0 ? '' : '${itemsOfTime[0]} Hour '}' +
-          '${itemsOfTime[1] < 10 ? '0${itemsOfTime[1]} Min Left' : '${itemsOfTime[1]} Min Left'}';
-    } else if (nowTime.isBefore(prayerTimes.maghrib)) {
-      List<int> itemsOfTime = buildDuration(nowTime, prayerTimes.maghrib);
-      return '${itemsOfTime[0] <= 0 ? '' : '${itemsOfTime[0]} Hour '}' +
-          '${itemsOfTime[1] < 10 ? '0${itemsOfTime[1]} Min Left' : '${itemsOfTime[1]} Min Left'}';
-    } else if (nowTime.isBefore(prayerTimes.isha)) {
-      List<int> itemsOfTime = buildDuration(nowTime, prayerTimes.isha);
-      return '${itemsOfTime[0] <= 0 ? '' : '${itemsOfTime[0]} Hour '}' +
-          '${itemsOfTime[1] < 10 ? '0${itemsOfTime[1]} Min Left' : '${itemsOfTime[1]} Min Left'}';
+    switch (prayerTimes.nextPrayer()) {
+      case Prayer.fajr:
+        return buildCountdownText(nowTime, prayerTimes.fajr.toLocal());
+        break;
+      case Prayer.sunrise:
+        return buildCountdownText(nowTime, prayerTimes.sunrise.toLocal());
+
+        break;
+      case Prayer.dhuhr:
+        return buildCountdownText(nowTime, prayerTimes.dhuhr.toLocal());
+
+        break;
+      case Prayer.asr:
+        return buildCountdownText(nowTime, prayerTimes.asr.toLocal());
+
+        break;
+      case Prayer.maghrib:
+        return buildCountdownText(nowTime, prayerTimes.maghrib.toLocal());
+
+        break;
+      case Prayer.isha:
+        return buildCountdownText(nowTime, prayerTimes.isha.toLocal());
+
+        break;
+      default:
+        return buildCountdownText(
+            nowTime, prayerTimes.fajr.add(Duration(days: 1)).toLocal());
     }
   }
 
-  buildDuration(DateTime nowTime, DateTime prayTime) {
-    List<int> results = [];
-    int durationOfNow = buildDurationSecondsForDateTimes(nowTime);
-    int durationOfEnd = buildDurationSecondsForDateTimes(prayTime);
-
-    durationFinal = durationOfEnd - durationOfNow;
-    int hourOfitem = (durationFinal ~/ (60 * 60));
-    results.add(hourOfitem);
-    int minuteOfitem = (durationFinal - (hourOfitem * 60 * 60)) ~/ 60;
-    results.add(minuteOfitem);
-
-    int secondOfitem =
-        (durationFinal - (minuteOfitem * 60) - (hourOfitem * 60 * 60));
-    results.add(secondOfitem);
-
-    return results;
-  }
-
-  int buildDurationSecondsForDateTimes(DateTime dateTime) {
-    int hourOfItem = dateTime.hour;
-    int minuteOfitem = dateTime.minute;
-    int secondsOfitem = dateTime.second;
-    int durationOfitems =
-        ((hourOfItem * 60 * 60) + (minuteOfitem * 60) + (secondsOfitem));
-    return durationOfitems;
+  buildCountdownText(DateTime nowTime, DateTime relatedPrayerTime) {
+    Duration differenceBetween = relatedPrayerTime.difference(nowTime);
+    hourOfRemain = differenceBetween.inHours;
+    minuteOfRemain = differenceBetween.inMinutes % 60;
   }
 
   buildHeaderCardText() {
-    DateTime nowTime = DateTime.now().toLocal();
-    if (nowTime.isBefore(prayerTimes.fajr)) {
-      return 'Fajr ' + buildTimeOfPrayer(prayerTimes.fajr);
-    } else if (nowTime.isBefore(prayerTimes.sunrise)) {
-      return 'Sunrise ' + buildTimeOfPrayer(prayerTimes.sunrise);
-    } else if (nowTime.isBefore(prayerTimes.dhuhr)) {
-      return 'Dhuhr ' + buildTimeOfPrayer(prayerTimes.dhuhr);
-    } else if (nowTime.isBefore(prayerTimes.asr)) {
-      return 'Asr ' + buildTimeOfPrayer(prayerTimes.asr);
-    } else if (nowTime.isBefore(prayerTimes.maghrib)) {
-      return 'Maghrib ' + buildTimeOfPrayer(prayerTimes.maghrib);
-    } else if (nowTime.isBefore(prayerTimes.isha)) {
-      return 'Isha ' + buildTimeOfPrayer(prayerTimes.isha);
+    switch (prayerTimes.nextPrayer()) {
+      case Prayer.fajr:
+        return 'Fajr ' + buildTimeOfPrayer(prayerTimes.fajr);
+        break;
+      case Prayer.sunrise:
+        return 'Sunrise ' + buildTimeOfPrayer(prayerTimes.sunrise);
+        break;
+      case Prayer.dhuhr:
+        return 'Dajr ' + buildTimeOfPrayer(prayerTimes.dhuhr);
+        break;
+      case Prayer.asr:
+        return 'Asr ' + buildTimeOfPrayer(prayerTimes.asr);
+        break;
+      case Prayer.maghrib:
+        return 'Maghrib ' + buildTimeOfPrayer(prayerTimes.maghrib);
+        break;
+      case Prayer.isha:
+        return 'Isha ' + buildTimeOfPrayer(prayerTimes.isha);
+        break;
+      default:
+        return 'Fajr ' +
+            buildTimeOfPrayer(prayerTimes.fajr.add(Duration(days: 1)));
     }
   }
 
