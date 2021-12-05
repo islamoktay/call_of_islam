@@ -27,6 +27,7 @@ dependencies:
   cupertino_icons: ^1.0.0
   flutter:
     sdk: flutter
+  flutter_compass: ^0.7.0
   flutter_localizations:
     sdk: flutter
   font_awesome_flutter: null
