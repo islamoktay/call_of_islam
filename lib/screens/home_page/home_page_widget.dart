@@ -249,6 +249,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         );
                       },
                       child: SectionsWidget(
+                        image: 'assets/images/qibla-compass.png',
                         text: 'Qibla Finder',
                       ),
                     ),
@@ -262,6 +263,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         );
                       },
                       child: SectionsWidget(
+                        image: 'assets/images/crescent-moon.png',
                         text: 'Prayer Times',
                       ),
                     ),
@@ -275,6 +277,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         );
                       },
                       child: SectionsWidget(
+                        image: 'assets/images/setting.png',
                         text: 'Settings',
                       ),
                     )
