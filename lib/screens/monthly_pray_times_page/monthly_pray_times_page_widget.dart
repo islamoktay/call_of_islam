@@ -1,5 +1,9 @@
+import 'package:adhan/adhan.dart';
 import 'package:flutter/material.dart';
+import 'package:prayer_times_project/screens/monthly_pray_times_page/components/prayer_times_per_month.dart';
+import 'package:prayer_times_project/screens/monthly_pray_times_page/model/prayer_times_model.dart';
 import 'package:prayer_times_project/services/flutter_flow_theme.dart';
+import 'package:prayer_times_project/services/location_service.dart';
 
 class MonthlyPrayTimesPageWidget extends StatefulWidget {
   MonthlyPrayTimesPageWidget({Key key}) : super(key: key);
@@ -12,9 +16,12 @@ class MonthlyPrayTimesPageWidget extends StatefulWidget {
 class _MonthlyPrayTimesPageWidgetState
     extends State<MonthlyPrayTimesPageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
+  final prayerTimes = PrayerTimes.today(
+      Coordinates(LocationService.latitude, LocationService.longitude),
+      CalculationMethod.muslim_world_league.getParameters());
   @override
   Widget build(BuildContext context) {
+    List<PrayerTimesForMonth> monthlySchedule = buildMonthlyPrayerSchedule();
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.secondaryColor,
@@ -54,53 +61,23 @@ class _MonthlyPrayTimesPageWidgetState
                           ),
                         ),
                       ),
+                      SizedBox(height: 10),
                       Expanded(
-                        child: ListView(
-                          padding: EdgeInsets.zero,
-                          scrollDirection: Axis.vertical,
-                          children: [
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                        child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: monthlySchedule.length,
+                            itemBuilder: (BuildContext context, index) {
+                              return Column(
                                 children: [
-                                  Text(
-                                    'Tarih',
-                                    style: FlutterFlowTheme.title3,
-                                  ),
-                                  Text(
-                                    'imsak',
-                                    style: FlutterFlowTheme.title3,
-                                  ),
-                                  Text(
-                                    'sabah',
-                                    style: FlutterFlowTheme.title3,
-                                  ),
-                                  Text(
-                                    'ogle',
-                                    style: FlutterFlowTheme.title3,
-                                  ),
-                                  Text(
-                                    'ikindi',
-                                    style: FlutterFlowTheme.title3,
-                                  ),
-                                  Text(
-                                    'aksam',
-                                    style: FlutterFlowTheme.title3,
-                                  ),
-                                  Text(
-                                    'yatsi',
-                                    style: FlutterFlowTheme.title3,
-                                  )
+                                  PrayerTimesPerMonth(
+                                      prayerTimesPerMonthModel:
+                                          monthlySchedule[index]),
+                                  SizedBox(height: 10)
                                 ],
-                              ),
-                            )
-                          ],
-                        ),
-                      )
+                              );
+                            }),
+                      ),
+                      SizedBox(height: 10)
                     ],
                   ),
                 ),
@@ -110,5 +87,29 @@ class _MonthlyPrayTimesPageWidgetState
         ),
       ),
     );
+  }
+
+  List<PrayerTimesForMonth> buildMonthlyPrayerSchedule() {
+    List<PrayerTimesForMonth> prayerTimesForMonth = [];
+
+    for (var i = 0; i < 30; i++) {
+      PrayerTimesForMonth prayerTimesPerMonthModel = PrayerTimesForMonth();
+      prayerTimesPerMonthModel.dateOfRelatedTime =
+          DateTime.now().add(Duration(days: i));
+      prayerTimesPerMonthModel.fajrTime =
+          prayerTimes.fajr.add(Duration(days: i));
+      prayerTimesPerMonthModel.sunriseTime =
+          prayerTimes.sunrise.add(Duration(days: i));
+      prayerTimesPerMonthModel.dhuhrTime =
+          prayerTimes.dhuhr.add(Duration(days: i));
+      prayerTimesPerMonthModel.asrTime = prayerTimes.asr.add(Duration(days: i));
+      prayerTimesPerMonthModel.maghribTime =
+          prayerTimes.maghrib.add(Duration(days: i));
+      prayerTimesPerMonthModel.ishaTime =
+          prayerTimes.isha.add(Duration(days: i));
+      prayerTimesForMonth.add(prayerTimesPerMonthModel);
+    }
+
+    return prayerTimesForMonth;
   }
 }

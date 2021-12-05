@@ -51,7 +51,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFF146261),
+      backgroundColor: FlutterFlowTheme.secondaryColor,
       body: SafeArea(
         bottom: false,
         child: Padding(
