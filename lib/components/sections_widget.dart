@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:prayer_times_project/services/flutter_flow_theme.dart';
 
 class SectionsWidget extends StatefulWidget {
-  SectionsWidget({
-    Key key,
-    this.text,
-  }) : super(key: key);
+  SectionsWidget({Key key, this.text, this.image}) : super(key: key);
 
   final String text;
+  final String image;
 
   @override
   _SectionsWidgetState createState() => _SectionsWidgetState();
@@ -35,8 +33,8 @@ class _SectionsWidgetState extends State<SectionsWidget> {
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
               child: Image.asset(
-                'assets/images/pngegg.png',
-                fit: BoxFit.scaleDown,
+                widget.image,
+                fit: BoxFit.contain,
               ),
             ),
           ),
