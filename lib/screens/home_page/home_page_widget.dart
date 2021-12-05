@@ -26,15 +26,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   String nameOfCity, nameOfCountry;
   @override
   void initState() {
-    super.initState();
     timer =
         Timer.periodic(Duration(seconds: 1), (Timer t) => calculateCountdown());
     buildLocationName();
+    super.initState();
   }
 
   final prayerTimes = PrayerTimes.today(
       Coordinates(LocationService.latitude, LocationService.longitude),
       CalculationMethod.muslim_world_league.getParameters());
+  final double myDegree =
+      Qibla(Coordinates(LocationService.latitude, LocationService.longitude))
+          .direction;
+
   Future buildLocationName() async {
     try {
       setState(() {});
@@ -236,7 +240,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CompassPageWidget(),
+                            builder: (context) => CompassPageWidget(
+                              location:
+                                  buildLocationText(nameOfCity, nameOfCountry),
+                              degree: myDegree,
+                            ),
                           ),
                         );
                       },

@@ -1,8 +1,12 @@
+import 'dart:math' as Math;
 import 'package:flutter/material.dart';
+import 'package:flutter_compass/flutter_compass.dart';
 import 'package:prayer_times_project/services/flutter_flow_theme.dart';
 
 class CompassPageWidget extends StatefulWidget {
-  CompassPageWidget({Key key}) : super(key: key);
+  final String location;
+  final double degree;
+  CompassPageWidget({Key key, this.location, this.degree}) : super(key: key);
 
   @override
   _CompassPageWidgetState createState() => _CompassPageWidgetState();
@@ -50,48 +54,100 @@ class _CompassPageWidgetState extends State<CompassPageWidget> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            'Konum : ',
-                            style: FlutterFlowTheme.bodyText1,
+                    widget.location == null
+                        ? SizedBox(height: 0, width: 0)
+                        : Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  'Location : ',
+                                  style: FlutterFlowTheme.bodyText1,
+                                ),
+                                Text(
+                                  widget.location,
+                                  style: FlutterFlowTheme.bodyText1,
+                                )
+                              ],
+                            ),
                           ),
-                          Text(
-                            'Istanbul',
-                            style: FlutterFlowTheme.bodyText1,
-                          )
-                        ],
-                      ),
-                    ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Text(
-                          'Tarih : ',
+                          'Date : ',
                           style: FlutterFlowTheme.bodyText1,
                         ),
                         Text(
-                          '24.10.2021',
+                          buildTimeOfPrayer(),
                           style: FlutterFlowTheme.bodyText1,
                         )
                       ],
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Text(
-                          'Saat : ',
-                          style: FlutterFlowTheme.bodyText1,
-                        ),
-                        Text(
-                          '14.00',
-                          style: FlutterFlowTheme.bodyText1,
-                        )
-                      ],
-                    )
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+                    StreamBuilder<CompassEvent>(
+                      stream: FlutterCompass.events,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
+                          return Text(
+                              'Error reading heading: ${snapshot.error}');
+                        }
+
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+
+                        double direction = snapshot.data.heading;
+
+                        // if direction is null, then device does not support this sensor
+                        // show error message
+                        if (direction == null)
+                          return Center(
+                            child: Text("Device does not have sensors !"),
+                          );
+
+                        return Material(
+                          color: Colors.transparent,
+                          clipBehavior: Clip.antiAlias,
+                          child: Container(
+                            padding: EdgeInsets.all(16.0),
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
+                            child: Transform.rotate(
+                              angle: (direction * (Math.pi / 180) * -1),
+                              child: Stack(children: [
+                                Image.asset(
+                                  'assets/images/compass.png',
+                                  color: Colors.transparent,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.8,
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.8,
+                                  fit: BoxFit.fill,
+                                ),
+                                Transform.rotate(
+                                  angle: widget.degree * (Math.pi / 180),
+                                  child: Image.asset(
+                                    'assets/images/compass.png',
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.8,
+                                    height:
+                                        MediaQuery.of(context).size.width * 0.8,
+                                    fit: BoxFit.fill,
+                                  ),
+                                )
+                              ]),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -100,5 +156,25 @@ class _CompassPageWidgetState extends State<CompassPageWidget> {
         ),
       ),
     );
+  }
+
+  String buildTimeOfPrayer() {
+    List<String> months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'June',
+      'July',
+      'Aug',
+      'Sept',
+      'Oct',
+      'Nov',
+      'Dec'
+    ];
+    String date =
+        '${DateTime.now().toLocal().day} ${months[DateTime.now().toLocal().month - 1]} ${DateTime.now().toLocal().year}';
+    return date;
   }
 }
