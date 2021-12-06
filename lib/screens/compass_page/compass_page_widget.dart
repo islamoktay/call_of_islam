@@ -17,6 +17,7 @@ class _CompassPageWidgetState extends State<CompassPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.location);
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.secondaryColor,
@@ -54,7 +55,7 @@ class _CompassPageWidgetState extends State<CompassPageWidget> {
                         ),
                       ),
                     ),
-                    widget.location == null
+                    widget.location == null || widget.location == ''
                         ? SizedBox(height: 0, width: 0)
                         : Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
