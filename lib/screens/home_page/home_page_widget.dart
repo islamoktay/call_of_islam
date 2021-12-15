@@ -4,6 +4,7 @@ import 'package:adhan/adhan.dart';
 import 'package:prayer_times_project/components/namaz_vakitleri_text_widget.dart';
 import 'package:prayer_times_project/components/sections_widget.dart';
 import 'package:prayer_times_project/services/flutter_flow_theme.dart';
+import 'package:prayer_times_project/services/local_notification_services.dart';
 import 'package:prayer_times_project/services/location_service.dart';
 import 'package:geocoding/geocoding.dart';
 import '../compass_page/compass_page_widget.dart';
@@ -370,5 +371,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     } else {
       return '$nameOfCity, $nameOfCountry';
     }
+  }
+
+  void buildLocalNotificationFunc(DateTime time) {
+    LocalNotificationService.showScheduledNotification(
+      title: "Time For Pray",
+    );
   }
 }
