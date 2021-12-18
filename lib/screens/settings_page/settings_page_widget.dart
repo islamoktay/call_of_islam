@@ -21,7 +21,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.secondaryColor,
+        backgroundColor: FlutterFlowTheme.primaryColor,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -40,7 +40,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
           'Settings Page',
           style: FlutterFlowTheme.bodyText1.override(
             fontFamily: 'Lexend Deca',
-            color: Colors.white,
+                color: FlutterFlowTheme.tertiaryColor,
             fontSize: 20,
             fontWeight: FontWeight.normal,
           ),
@@ -49,7 +49,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: FlutterFlowTheme.secondaryColor,
+      backgroundColor: FlutterFlowTheme.primaryColor,
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -63,13 +63,12 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                 'Push Notifications',
                 style: FlutterFlowTheme.title3.override(
                   fontFamily: 'Lexend Deca',
-                  color: Colors.white,
+                color: FlutterFlowTheme.tertiaryColor,
                   fontSize: 20,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
-              activeColor: FlutterFlowTheme.primaryColor,
-              activeTrackColor: FlutterFlowTheme.primaryColor,
+              activeColor: FlutterFlowTheme.secondaryColor,
+              activeTrackColor: FlutterFlowTheme.secondaryColor,
               dense: false,
               controlAffinity: ListTileControlAffinity.trailing,
               contentPadding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 12),
@@ -83,14 +82,14 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
               'Location Services',
               style: FlutterFlowTheme.title3.override(
                 fontFamily: 'Lexend Deca',
-                color: Colors.white,
+                color: FlutterFlowTheme.tertiaryColor,
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
+
               ),
             ),
             tileColor: Color(0x004EE034),
-            activeColor: FlutterFlowTheme.primaryColor,
-            activeTrackColor: FlutterFlowTheme.primaryColor,
+            activeColor: FlutterFlowTheme.secondaryColor,
+            activeTrackColor: FlutterFlowTheme.secondaryColor,
             dense: false,
             controlAffinity: ListTileControlAffinity.trailing,
             contentPadding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 12),
@@ -104,7 +103,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                 Text(
                   'Select Language',
                   style: FlutterFlowTheme.title3.override(
-                    fontFamily: 'Poppins',
+                fontFamily: 'Lexend Deca',
                     fontSize: 20,
                   ),
                 ),
@@ -114,7 +113,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                   width: 130,
                   height: 40,
                   textStyle: FlutterFlowTheme.bodyText1.override(
-                    fontFamily: 'Poppins',
+                fontFamily: 'Lexend Deca',
                     color: FlutterFlowTheme.tertiaryColor,
                   ),
                   icon: Icon(
@@ -122,7 +121,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                     color: FlutterFlowTheme.tertiaryColor,
                     size: 15,
                   ),
-                  fillColor: FlutterFlowTheme.primaryColor,
+                  fillColor: FlutterFlowTheme.secondaryColor,
                   elevation: 10,
                   borderColor: Colors.transparent,
                   borderWidth: 0,

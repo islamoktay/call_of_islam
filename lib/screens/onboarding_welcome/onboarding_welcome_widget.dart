@@ -99,7 +99,7 @@ class _OnboardingWelcomeWidgetState extends State<OnboardingWelcomeWidget>
                 'بسم الله الرحمن الرحيم',
                 style: FlutterFlowTheme.title1.override(
                   fontFamily: 'Lexend Deca',
-                  color: Colors.white,
+                  color: FlutterFlowTheme.tertiaryColor,
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
                 ),
@@ -111,13 +111,13 @@ class _OnboardingWelcomeWidgetState extends State<OnboardingWelcomeWidget>
                 'In the name of Allah',
                 style: FlutterFlowTheme.title3.override(
                   fontFamily: 'Lexend Deca',
-                  color: Colors.white,
+                  color: FlutterFlowTheme.tertiaryColor,
                   fontSize: 20,
                   fontWeight: FontWeight.normal,
                 ),
               ).animated([animationsMap['textOnPageLoadAnimation2']]),
             ),
-            FFButtonWidget(
+             FFButtonWidget(
               onPressed: () async {
                 setState(() => _loadingButton = true);
                 try {
@@ -134,14 +134,14 @@ class _OnboardingWelcomeWidgetState extends State<OnboardingWelcomeWidget>
                   setState(() => _loadingButton = false);
                 }
               },
-              text: 'Konuma Izin Ver',
+              text: 'Welcome',
               options: FFButtonOptions(
                 width: 160,
                 height: 40,
-                color: FlutterFlowTheme.secondaryColor,
+                color: FlutterFlowTheme.primaryColor,
                 textStyle: FlutterFlowTheme.subtitle2.override(
                   fontFamily: 'Poppins',
-                  color: Colors.white,
+                color: FlutterFlowTheme.tertiaryColor,
                 ),
                 borderSide: BorderSide(
                   color: Colors.transparent,
@@ -150,7 +150,7 @@ class _OnboardingWelcomeWidgetState extends State<OnboardingWelcomeWidget>
                 borderRadius: 12,
               ),
               loading: _loadingButton,
-            )
+            ) 
           ],
         ).animated([animationsMap['columnOnPageLoadAnimation']]),
       ).animated([animationsMap['containerOnPageLoadAnimation']]),
