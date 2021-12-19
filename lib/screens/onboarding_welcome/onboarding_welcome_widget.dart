@@ -2,6 +2,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:prayer_times_project/services/flutter_flow_animations.dart';
 import 'package:prayer_times_project/services/flutter_flow_theme.dart';
 import 'package:prayer_times_project/services/flutter_flow_widgets.dart';
+import 'package:prayer_times_project/services/local_notification_service.dart';
 import 'package:prayer_times_project/services/location_service.dart';
 
 import '../home_page/home_page_widget.dart';
@@ -56,12 +57,20 @@ class _OnboardingWelcomeWidgetState extends State<OnboardingWelcomeWidget>
 
   @override
   void initState() {
+    LocalNotificationService.init(initScheduled: true);
+    listenNotification();
     super.initState();
     startPageLoadAnimations(
       animationsMap.values
           .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
       this,
     );
+  }
+  void listenNotification() {
+    LocalNotificationService.onNotifications.stream.listen(onClickedNotification);
+  }
+  void onClickedNotification(String payload) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePageWidget()));
   }
 
   @override
@@ -156,4 +165,7 @@ class _OnboardingWelcomeWidgetState extends State<OnboardingWelcomeWidget>
       ).animated([animationsMap['containerOnPageLoadAnimation']]),
     );
   }
+
+
+
 }

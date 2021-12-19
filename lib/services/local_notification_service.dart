@@ -1,18 +1,24 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:rxdart/subjects.dart';
+import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
-
+import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 class LocalNotificationService {
   static final _notifications = FlutterLocalNotificationsPlugin();
-
+static final onNotifications = BehaviorSubject<String>();
   static Future _notificationDetails() async {
+final sound = 'adhan_nassar_khatami.mp3';
     return NotificationDetails(
       android: AndroidNotificationDetails(
-        'channelId',
+        'channelId 2',
         'channelName',
         channelDescription: 'channelDescription',
         importance: Importance.max,
+        sound: RawResourceAndroidNotificationSound(sound.split('.').first),
       ),
-      iOS: IOSNotificationDetails(),
+      iOS: IOSNotificationDetails(
+        sound: sound
+      ),
     );
   }
 
@@ -24,10 +30,22 @@ class LocalNotificationService {
       android: androidSettings,
       iOS: iosSettings,
     );
+    final _details = await _notifications.getNotificationAppLaunchDetails();
+    if(_details != null && _details.didNotificationLaunchApp) {
+      onNotifications.add(_details.payload);
+    }
     await _notifications.initialize(
       settings,
-      onSelectNotification: (payload) async {},
+      onSelectNotification: (payload) async {
+        onNotifications.add(payload);
+      },
     );
+
+    if(initScheduled) {
+      tz.initializeTimeZones();
+      final locationName = await FlutterNativeTimezone.getLocalTimezone();
+      tz.setLocalLocation(tz.getLocation(locationName));
+    }
   }
 
   static void scheduledNotification({
@@ -49,16 +67,16 @@ class LocalNotificationService {
         matchDateTimeComponents: DateTimeComponents.time,
       );
 
-  static tz.TZDateTime _scheduleDaily(DateTime scheduledDate) {
-    final now = tz.TZDateTime.now(tz.local);
+  static tz.TZDateTime _scheduleDaily(DateTime timeOfScheduled) {
+    final now = DateTime.now().toLocal();
     final scheduledDate = tz.TZDateTime(
-      tz.local,
+     tz.local,
       now.year,
       now.month,
       now.day,
-      now.hour,
-      now.minute,
-      now.second,
+      timeOfScheduled.hour,
+      timeOfScheduled.minute,
+      timeOfScheduled.second,
     );
     return scheduledDate.isBefore(now)
         ? scheduledDate.add(Duration(days: 1))

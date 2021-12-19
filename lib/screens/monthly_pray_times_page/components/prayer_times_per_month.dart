@@ -20,7 +20,7 @@ class _PrayerTimesPerMonthState extends State<PrayerTimesPerMonth> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height * 0.15,
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.secondaryColor,
+          color: FlutterFlowTheme.darkerPrimaryBlue,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Row(

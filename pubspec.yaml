@@ -31,12 +31,14 @@ dependencies:
   flutter_local_notifications: ^9.1.5
   flutter_localizations:
     sdk: flutter
+  flutter_native_timezone: ^2.0.0
   font_awesome_flutter: null
   geocoding: ^2.0.1
   geolocator: ^8.0.0
   google_fonts: ^2.1.0
   intl: null
   page_transition: null
+  rxdart: ^0.27.3
   timeago: null
   timezone: ^0.8.0
   url_launcher: null

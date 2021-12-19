@@ -10,11 +10,12 @@ class TimeChipForPrayer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.center,
+      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.01),
+      alignment: Alignment.centerLeft,
       width: MediaQuery.of(context).size.width * 0.3,
       height: MediaQuery.of(context).size.height * 0.035,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.primaryColor,
+        color: FlutterFlowTheme.moreDarkerPrimaryBlue,
         borderRadius: BorderRadius.circular(15),
       ),
       child: Text(

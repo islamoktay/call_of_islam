@@ -29,7 +29,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
           buttonSize: 46,
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.white,
+            color: FlutterFlowTheme.tertiaryColor,
             size: 24,
           ),
           onPressed: () async {
@@ -94,7 +94,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             controlAffinity: ListTileControlAffinity.trailing,
             contentPadding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 12),
           ),
-          Padding(
+       /*    Padding(
             padding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 12),
             child: Row(
               mainAxisSize: MainAxisSize.max,
@@ -132,7 +132,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
               ],
             ),
           )
-        ],
+        */ ],
       ),
     );
   }
