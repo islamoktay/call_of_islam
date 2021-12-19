@@ -325,31 +325,36 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   Future buildNotifications() async {
     String message = 'Prayer is the most fundamental support of Islam.';
-   LocalNotificationService.scheduledNotification(
+    LocalNotificationService.scheduledNotification(
+      id: 1,
       title: 'Time For Fajr Prayer',
       body: message,
       scheduledDate: PrayerTimesConstants.prayerTimes.fajr,
       payload: 'FajrTime',
     );
     LocalNotificationService.scheduledNotification(
+      id: 2,
       title: 'Time For Dhuhr Prayer',
       body: message,
       scheduledDate: PrayerTimesConstants.prayerTimes.dhuhr,
       payload: 'DhuhrTime',
     );
     LocalNotificationService.scheduledNotification(
+      id: 3,
       title: 'Time For Asr Prayer',
       body: message,
       scheduledDate: PrayerTimesConstants.prayerTimes.asr,
       payload: 'AsrTime',
     );
     LocalNotificationService.scheduledNotification(
+      id: 4,
       title: 'Time For Maghrib Prayer',
       body: message,
       scheduledDate: PrayerTimesConstants.prayerTimes.maghrib,
       payload: 'MaghribTime',
     );
     LocalNotificationService.scheduledNotification(
+      id: 5,
       title: 'Time For Isha Prayer',
       body: message,
       scheduledDate: PrayerTimesConstants.prayerTimes.isha,
