@@ -10,11 +10,12 @@ static final onNotifications = BehaviorSubject<String>();
 final sound = 'adhan_nassar_khatami.mp3';
     return NotificationDetails(
       android: AndroidNotificationDetails(
-        'channelId 2',
+        'channelId 5',
         'channelName',
         channelDescription: 'channelDescription',
         importance: Importance.max,
         sound: RawResourceAndroidNotificationSound(sound.split('.').first),
+enableVibration: true,
       ),
       iOS: IOSNotificationDetails(
         sound: sound

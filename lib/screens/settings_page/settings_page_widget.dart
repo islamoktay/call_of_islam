@@ -60,7 +60,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
               onChanged: (newValue) =>
                   setState(() => switchListTileValue1 = newValue),
               title: Text(
-                'Push Notifications',
+                'Notifications',
                 style: FlutterFlowTheme.title3.override(
                   fontFamily: 'Lexend Deca',
                 color: FlutterFlowTheme.tertiaryColor,
