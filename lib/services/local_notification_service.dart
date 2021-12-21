@@ -3,11 +3,12 @@ import 'package:rxdart/subjects.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
+
 class LocalNotificationService {
   static final _notifications = FlutterLocalNotificationsPlugin();
-static final onNotifications = BehaviorSubject<String>();
+  static final onNotifications = BehaviorSubject<String>();
   static Future _notificationDetails() async {
-final sound = 'adhan_nassar_khatami.mp3';
+    final sound = 'adhan_nassar_khatami.mp3';
     return NotificationDetails(
       android: AndroidNotificationDetails(
         'channelId 5',
@@ -15,11 +16,9 @@ final sound = 'adhan_nassar_khatami.mp3';
         channelDescription: 'channelDescription',
         importance: Importance.max,
         sound: RawResourceAndroidNotificationSound(sound.split('.').first),
-enableVibration: true,
+        enableVibration: true,
       ),
-      iOS: IOSNotificationDetails(
-        sound: sound
-      ),
+      iOS: IOSNotificationDetails(sound: sound),
     );
   }
 
@@ -32,7 +31,7 @@ enableVibration: true,
       iOS: iosSettings,
     );
     final _details = await _notifications.getNotificationAppLaunchDetails();
-    if(_details != null && _details.didNotificationLaunchApp) {
+    if (_details != null && _details.didNotificationLaunchApp) {
       onNotifications.add(_details.payload);
     }
     await _notifications.initialize(
@@ -42,7 +41,7 @@ enableVibration: true,
       },
     );
 
-    if(initScheduled) {
+    if (initScheduled) {
       tz.initializeTimeZones();
       final locationName = await FlutterNativeTimezone.getLocalTimezone();
       tz.setLocalLocation(tz.getLocation(locationName));
@@ -71,7 +70,7 @@ enableVibration: true,
   static tz.TZDateTime _scheduleDaily(DateTime timeOfScheduled) {
     final now = DateTime.now().toLocal();
     final scheduledDate = tz.TZDateTime(
-     tz.local,
+      tz.local,
       now.year,
       now.month,
       now.day,

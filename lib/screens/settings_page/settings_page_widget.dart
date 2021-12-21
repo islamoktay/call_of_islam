@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:notification_permissions/notification_permissions.dart';
 import 'package:prayer_times_project/services/flutter_flow_drop_down.dart';
 import 'package:prayer_times_project/services/flutter_flow_icon_button.dart';
 import 'package:prayer_times_project/services/flutter_flow_theme.dart';
@@ -11,10 +13,54 @@ class SettingsPageWidget extends StatefulWidget {
 }
 
 class _SettingsPageWidgetState extends State<SettingsPageWidget> {
+  Future<String> permissionStatusFuture;
+  var permGranted = "granted";
+  var permDenied = "denied";
+  var permUnknown = "unknown";
+  var permProvisional = "provisional";
   String dropDownValue;
-  bool switchListTileValue1;
-  bool switchListTileValue2;
+  bool switchListTileNotification;
+  bool switchListTileLocation;
+  LocationPermission permission;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  @override
+  void initState() {
+    checkLocationPermission();
+    permissionStatusFuture = getCheckNotificationPermStatus();
+    super.initState();
+  }
+
+  Future<String> getCheckNotificationPermStatus() {
+    return NotificationPermissions.getNotificationPermissionStatus()
+        .then((status) {
+      switch (status) {
+        case PermissionStatus.denied:
+          switchListTileNotification = false;
+          return permDenied;
+        case PermissionStatus.granted:
+          switchListTileNotification = true;
+          return permGranted;
+        case PermissionStatus.provisional:
+          return permProvisional;
+        default:
+          return '';
+      }
+    });
+  }
+
+  checkLocationPermission() async {
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied ||
+        permission == LocationPermission.deniedForever) {
+      setState(() {
+        switchListTileLocation = false;
+      });
+    } else {
+      setState(() {
+        switchListTileLocation = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +86,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
           'Settings Page',
           style: FlutterFlowTheme.bodyText1.override(
             fontFamily: 'Lexend Deca',
-                color: FlutterFlowTheme.tertiaryColor,
+            color: FlutterFlowTheme.tertiaryColor,
             fontSize: 20,
             fontWeight: FontWeight.normal,
           ),
@@ -56,14 +102,26 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
             child: SwitchListTile.adaptive(
-              value: switchListTileValue1 ??= true,
-              onChanged: (newValue) =>
-                  setState(() => switchListTileValue1 = newValue),
+              value: switchListTileNotification ??= true,
+              onChanged: (value) {
+                setState(() {
+                  NotificationPermissions.requestNotificationPermissions(
+                          iosSettings: const NotificationSettingsIos(
+                              sound: true, badge: true, alert: true))
+                      .then((_) {
+                    // when finished, check the permission status
+                    setState(() {
+                      permissionStatusFuture = getCheckNotificationPermStatus();
+                      switchListTileNotification = value;
+                    });
+                  });
+                });
+              },
               title: Text(
                 'Notifications',
                 style: FlutterFlowTheme.title3.override(
                   fontFamily: 'Lexend Deca',
-                color: FlutterFlowTheme.tertiaryColor,
+                  color: FlutterFlowTheme.tertiaryColor,
                   fontSize: 20,
                 ),
               ),
@@ -75,16 +133,17 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             ),
           ),
           SwitchListTile.adaptive(
-            value: switchListTileValue2 ??= true,
-            onChanged: (newValue) =>
-                setState(() => switchListTileValue2 = newValue),
+            value: switchListTileLocation ??= true,
+            onChanged: (newValue) async {
+              await Geolocator.openLocationSettings();
+              setState(() => switchListTileLocation = newValue);
+            },
             title: Text(
               'Location Services',
               style: FlutterFlowTheme.title3.override(
                 fontFamily: 'Lexend Deca',
                 color: FlutterFlowTheme.tertiaryColor,
                 fontSize: 20,
-
               ),
             ),
             tileColor: Color(0x004EE034),
@@ -94,7 +153,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             controlAffinity: ListTileControlAffinity.trailing,
             contentPadding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 12),
           ),
-       /*    Padding(
+          /*    Padding(
             padding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 12),
             child: Row(
               mainAxisSize: MainAxisSize.max,
@@ -132,7 +191,8 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
               ],
             ),
           )
-        */ ],
+        */
+        ],
       ),
     );
   }
