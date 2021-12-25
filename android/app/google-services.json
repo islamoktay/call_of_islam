@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "352488009301",
+    "project_id": "call-of-islam",
+    "storage_bucket": "call-of-islam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352488009301:android:f4f47597e538ac56d1aedc",
+        "android_client_info": {
+          "package_name": "com.flutterflow.prayertimesproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352488009301-tjh60vvjmc5q9fr8c55o2h08n2ltr2fl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6TR0iPAz05imIwgUnFiqII2849BVkMnU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352488009301-tjh60vvjmc5q9fr8c55o2h08n2ltr2fl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
