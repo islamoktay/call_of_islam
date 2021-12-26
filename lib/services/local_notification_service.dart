@@ -8,10 +8,10 @@ class LocalNotificationService {
   static final _notifications = FlutterLocalNotificationsPlugin();
   static final onNotifications = BehaviorSubject<String>();
   static Future _notificationDetails() async {
-    final sound = 'adhan_nassar_khatami.mp3';
+    final String sound = 'adhan_nassar_khatami.mp3';
     return NotificationDetails(
       android: AndroidNotificationDetails(
-        'channelId 5',
+        'channelId 15',
         'channelName',
         channelDescription: 'channelDescription',
         importance: Importance.max,
