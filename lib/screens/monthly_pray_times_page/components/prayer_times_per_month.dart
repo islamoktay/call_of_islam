@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:prayer_times_project/screens/monthly_pray_times_page/components/time_chip_for_prayer.dart';
 import 'package:prayer_times_project/screens/monthly_pray_times_page/model/prayer_times_model.dart';
+import 'package:prayer_times_project/services/extensions/string_extension.dart';
 import 'package:prayer_times_project/services/flutter_flow_theme.dart';
+import 'package:prayer_times_project/services/locale_keys.g.dart';
 
 class PrayerTimesPerMonth extends StatefulWidget {
   final PrayerTimesForMonth prayerTimesPerMonthModel;
@@ -40,17 +42,17 @@ class _PrayerTimesPerMonthState extends State<PrayerTimesPerMonth> {
             Column(
               children: [
                 TimeChipForPrayer(
-                  stringPrayTime: 'Fajr',
+                  stringPrayTime: LocaleKeys.prayer_times_fajr.locale,
                   datePrayeTime: widget.prayerTimesPerMonthModel.fajrTime,
                 ),
                 Spacer(),
                 TimeChipForPrayer(
-                  stringPrayTime: 'Sunrise',
+                  stringPrayTime: LocaleKeys.prayer_times_sunrise.locale,
                   datePrayeTime: widget.prayerTimesPerMonthModel.sunriseTime,
                 ),
                 Spacer(),
                 TimeChipForPrayer(
-                  stringPrayTime: 'Dhuhr',
+                  stringPrayTime: LocaleKeys.prayer_times_dhuhr.locale,
                   datePrayeTime: widget.prayerTimesPerMonthModel.dhuhrTime,
                 ),
               ],
@@ -58,17 +60,17 @@ class _PrayerTimesPerMonthState extends State<PrayerTimesPerMonth> {
             Column(
               children: [
                 TimeChipForPrayer(
-                  stringPrayTime: 'Asr',
+                  stringPrayTime: LocaleKeys.prayer_times_asr.locale,
                   datePrayeTime: widget.prayerTimesPerMonthModel.asrTime,
                 ),
                 Spacer(),
                 TimeChipForPrayer(
-                  stringPrayTime: 'Maghrib',
+                  stringPrayTime: LocaleKeys.prayer_times_maghrib.locale,
                   datePrayeTime: widget.prayerTimesPerMonthModel.maghribTime,
                 ),
                 Spacer(),
                 TimeChipForPrayer(
-                  stringPrayTime: 'Isha',
+                  stringPrayTime: LocaleKeys.prayer_times_isha.locale,
                   datePrayeTime: widget.prayerTimesPerMonthModel.ishaTime,
                 ),
               ],
@@ -79,18 +81,18 @@ class _PrayerTimesPerMonthState extends State<PrayerTimesPerMonth> {
 
   String buildTimeOfPrayer(DateTime timeOfPrayer) {
     List<String> months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'June',
-      'July',
-      'Aug',
-      'Sept',
-      'Oct',
-      'Nov',
-      'Dec'
+      LocaleKeys.months_jan.locale,
+      LocaleKeys.months_feb.locale,
+      LocaleKeys.months_mar.locale,
+      LocaleKeys.months_apr.locale,
+      LocaleKeys.months_may.locale,
+      LocaleKeys.months_june.locale,
+      LocaleKeys.months_july.locale,
+      LocaleKeys.months_aug.locale,
+      LocaleKeys.months_sept.locale,
+      LocaleKeys.months_oct.locale,
+      LocaleKeys.months_nov.locale,
+      LocaleKeys.months_dec.locale
     ];
     String date =
         '${timeOfPrayer.day} ${months[timeOfPrayer.month - 1]} ${timeOfPrayer.year}';

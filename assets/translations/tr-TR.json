@@ -1,0 +1,52 @@
+{
+  "months": {
+    "jan": "Ocak",
+    "feb": "Şub",
+    "mar": "Mart",
+    "apr": "Nis",
+    "may": "Mayıs",
+    "july": "Tem",
+    "aug": "Ağu",
+    "june": "Haz",
+    "sept": "Eyl",
+    "dec": "Ara",
+    "oct": "Ekim",
+    "nov": "Kas"
+  },
+  "prayer_times": {
+    "fajr": "İmsak",
+    "sunrise": "Güneş",
+    "dhuhr": "Öğle",
+    "asr": "İkindi",
+    "maghrib": "Akşam",
+    "isha": "Yatsı"
+  },
+  "general": {
+    "location": "Konum",
+    "date": "Tarih",
+    "no_sensor_info": "Cihazda sensör yok.",
+    "hour": "Saat",
+    "min": "Dk Kaldı",
+    "bismillah": "Yüce Allah'ın adıyla",
+    "welcome": "Hoş geldiniz",
+    "page": "Sayfa"
+  },
+  "menus": {
+    "qibla_finder": "Kıble Bulucu",
+    "prayer_times": "Namaz Vakitleri",
+    "settings": "Ayarlar"
+  },
+  "notification": {
+    "prayer_times_noti": "Namaz, İslam'ın en temel dayanağıdır.",
+    "fajr_prayer": "Sabah Namazı Vakti",
+    "dhuhr_prayer": "Öğle Namazı Vakti",
+    "asr_prayer": "İkindi Namazı Vakti",
+    "maghrib_prayer": "Akşam Namazı Vakti",
+    "isha_prayer": "Yatsı Namazı Vakti"
+  },
+  "settings_menu": {
+    "notifications": "Bildirimler",
+    "location_services": "Konum Servisleri",
+    "language_settings": "Dil Ayarları"
+  }
+}

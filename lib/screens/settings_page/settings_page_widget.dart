@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:notification_permissions/notification_permissions.dart';
+import 'package:prayer_times_project/services/extensions/string_extension.dart';
 import 'package:prayer_times_project/services/flutter_flow_drop_down.dart';
 import 'package:prayer_times_project/services/flutter_flow_icon_button.dart';
 import 'package:prayer_times_project/services/flutter_flow_theme.dart';
+import 'package:prayer_times_project/services/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SettingsPageWidget extends StatefulWidget {
   SettingsPageWidget({Key key}) : super(key: key);
@@ -83,7 +86,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
           },
         ),
         title: Text(
-          'Settings Page',
+          '${LocaleKeys.menus_settings.locale} ${LocaleKeys.general_page.locale}',
           style: FlutterFlowTheme.bodyText1.override(
             fontFamily: 'Lexend Deca',
             color: FlutterFlowTheme.tertiaryColor,
@@ -118,7 +121,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                 });
               },
               title: Text(
-                'Notifications',
+                LocaleKeys.settings_menu_notifications.locale,
                 style: FlutterFlowTheme.title3.override(
                   fontFamily: 'Lexend Deca',
                   color: FlutterFlowTheme.tertiaryColor,
@@ -139,7 +142,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
               setState(() => switchListTileLocation = newValue);
             },
             title: Text(
-              'Location Services',
+              LocaleKeys.settings_menu_location_services.locale,
               style: FlutterFlowTheme.title3.override(
                 fontFamily: 'Lexend Deca',
                 color: FlutterFlowTheme.tertiaryColor,
@@ -153,26 +156,40 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             controlAffinity: ListTileControlAffinity.trailing,
             contentPadding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 12),
           ),
-          /*    Padding(
+          Padding(
             padding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 12),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Select Language',
+                  LocaleKeys.settings_menu_language_settings.locale,
                   style: FlutterFlowTheme.title3.override(
-                fontFamily: 'Lexend Deca',
+                    fontFamily: 'Lexend Deca',
                     fontSize: 20,
                   ),
                 ),
                 FlutterFlowDropDown(
-                  options: ['Turkce', 'English'].toList(),
-                  onChanged: (val) => setState(() => dropDownValue = val),
-                  width: 130,
+                  options: ['Türkçe', 'English'].toList(),
+                  onChanged: (String newValue) {
+                    setState(() {
+                      if (newValue == 'English') {
+                        this.setState(() {
+                          context.setLocale(Locale('en', 'US'));
+                          dropDownValue = "English";
+                        });
+                      } else if (newValue == 'Türkçe') {
+                        this.setState(() {
+                          context.setLocale(Locale('tr', 'TR'));
+                          dropDownValue = "Türkçe";
+                        });
+                      }
+                    });
+                  },
+                  width: 100,
                   height: 40,
                   textStyle: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Lexend Deca',
+                    fontFamily: 'Lexend Deca',
                     color: FlutterFlowTheme.tertiaryColor,
                   ),
                   icon: Icon(
@@ -187,11 +204,11 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                   borderRadius: 15,
                   margin: EdgeInsetsDirectional.fromSTEB(8, 4, 8, 4),
                   hidesUnderline: true,
+                  initialOption: dropDownValue,
                 )
               ],
             ),
           )
-        */
         ],
       ),
     );

@@ -1,0 +1,52 @@
+{
+  "months": {
+    "jan": "Jan",
+    "feb": "Feb",
+    "mar": "Mar",
+    "apr": "Apr",
+    "may": "May",
+    "july": "July",
+    "aug": "Aug",
+    "june": "June",
+    "sept": "Sept",
+    "dec": "Dec",
+    "oct": "Oct",
+    "nov": "Nov"
+  },
+  "prayer_times": {
+    "fajr": "Fajr",
+    "sunrise": "Sunrise",
+    "dhuhr": "Dhuhr",
+    "asr": "Asr",
+    "maghrib": "Maghrib",
+    "isha": "Isha"
+  },
+  "general": {
+    "location": "Location",
+    "date": "Date",
+    "no_sensor_info": "Device does not have sensors.",
+    "hour": "Hour",
+    "min": "Min Left",
+    "bismillah": "In the name of Allah",
+    "welcome": "Welcome",
+    "page": "Page"
+  },
+  "menus": {
+    "qibla_finder": "Qibla Finde",
+    "prayer_times": "Prayer Times",
+    "settings": "Settings"
+  },
+  "notification": {
+    "prayer_times_noti": "Prayer is the most fundamental support of Islam.",
+    "fajr_prayer": "Time For Fajr Prayer",
+    "dhuhr_prayer": "Time For Dhuhr Prayer",
+    "asr_prayer": "Time For Asr Prayer",
+    "maghrib_prayer": "Time For Maghrib Prayer",
+    "isha_prayer": "Time For Isha Prayer"
+  },
+  "settings_menu": {
+    "notifications": "Notifications",
+    "location_services": "Location Services",
+    "language_settings": "Language Settings"
+  }
+}

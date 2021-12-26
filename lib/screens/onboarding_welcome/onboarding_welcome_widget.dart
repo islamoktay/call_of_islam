@@ -1,8 +1,10 @@
 import 'package:geolocator/geolocator.dart';
+import 'package:prayer_times_project/services/extensions/string_extension.dart';
 import 'package:prayer_times_project/services/flutter_flow_animations.dart';
 import 'package:prayer_times_project/services/flutter_flow_theme.dart';
 import 'package:prayer_times_project/services/flutter_flow_widgets.dart';
 import 'package:prayer_times_project/services/local_notification_service.dart';
+import 'package:prayer_times_project/services/locale_keys.g.dart';
 import 'package:prayer_times_project/services/location_service.dart';
 
 import '../home_page/home_page_widget.dart';
@@ -66,11 +68,15 @@ class _OnboardingWelcomeWidgetState extends State<OnboardingWelcomeWidget>
       this,
     );
   }
+
   void listenNotification() {
-    LocalNotificationService.onNotifications.stream.listen(onClickedNotification);
+    LocalNotificationService.onNotifications.stream
+        .listen(onClickedNotification);
   }
+
   void onClickedNotification(String payload) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePageWidget()));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => HomePageWidget()));
   }
 
   @override
@@ -117,7 +123,7 @@ class _OnboardingWelcomeWidgetState extends State<OnboardingWelcomeWidget>
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 120),
               child: Text(
-                'In the name of Allah',
+                LocaleKeys.general_bismillah.locale,
                 style: FlutterFlowTheme.title3.override(
                   fontFamily: 'Lexend Deca',
                   color: FlutterFlowTheme.tertiaryColor,
@@ -126,7 +132,7 @@ class _OnboardingWelcomeWidgetState extends State<OnboardingWelcomeWidget>
                 ),
               ).animated([animationsMap['textOnPageLoadAnimation2']]),
             ),
-             FFButtonWidget(
+            FFButtonWidget(
               onPressed: () async {
                 setState(() => _loadingButton = true);
                 try {
@@ -143,14 +149,14 @@ class _OnboardingWelcomeWidgetState extends State<OnboardingWelcomeWidget>
                   setState(() => _loadingButton = false);
                 }
               },
-              text: 'Welcome',
+              text: LocaleKeys.general_welcome.locale,
               options: FFButtonOptions(
                 width: 160,
                 height: 40,
                 color: FlutterFlowTheme.primaryColor,
                 textStyle: FlutterFlowTheme.subtitle2.override(
                   fontFamily: 'Poppins',
-                color: FlutterFlowTheme.tertiaryColor,
+                  color: FlutterFlowTheme.tertiaryColor,
                 ),
                 borderSide: BorderSide(
                   color: Colors.transparent,
@@ -159,13 +165,10 @@ class _OnboardingWelcomeWidgetState extends State<OnboardingWelcomeWidget>
                 borderRadius: 12,
               ),
               loading: _loadingButton,
-            ) 
+            )
           ],
         ).animated([animationsMap['columnOnPageLoadAnimation']]),
       ).animated([animationsMap['containerOnPageLoadAnimation']]),
     );
   }
-
-
-
 }

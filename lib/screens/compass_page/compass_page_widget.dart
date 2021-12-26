@@ -1,7 +1,9 @@
 import 'dart:math' as Math;
 import 'package:flutter/material.dart';
 import 'package:flutter_compass/flutter_compass.dart';
+import 'package:prayer_times_project/services/extensions/string_extension.dart';
 import 'package:prayer_times_project/services/flutter_flow_theme.dart';
+import 'package:prayer_times_project/services/locale_keys.g.dart';
 
 class CompassPageWidget extends StatefulWidget {
   final String location;
@@ -63,7 +65,8 @@ class _CompassPageWidgetState extends State<CompassPageWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  'Location : ',
+                                  "${LocaleKeys.general_location.locale}" +
+                                      ' : ',
                                   style: FlutterFlowTheme.bodyText1,
                                 ),
                                 Text(
@@ -77,7 +80,7 @@ class _CompassPageWidgetState extends State<CompassPageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Text(
-                          'Date : ',
+                          ' ${LocaleKeys.general_date.locale} : ',
                           style: FlutterFlowTheme.bodyText1,
                         ),
                         Text(
@@ -161,18 +164,18 @@ class _CompassPageWidgetState extends State<CompassPageWidget> {
 
   String buildTimeOfPrayer() {
     List<String> months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'June',
-      'July',
-      'Aug',
-      'Sept',
-      'Oct',
-      'Nov',
-      'Dec'
+      LocaleKeys.months_jan.locale,
+      LocaleKeys.months_feb.locale,
+      LocaleKeys.months_mar.locale,
+      LocaleKeys.months_apr.locale,
+      LocaleKeys.months_may.locale,
+      LocaleKeys.months_june.locale,
+      LocaleKeys.months_july.locale,
+      LocaleKeys.months_aug.locale,
+      LocaleKeys.months_sept.locale,
+      LocaleKeys.months_oct.locale,
+      LocaleKeys.months_nov.locale,
+      LocaleKeys.months_dec.locale
     ];
     String date =
         '${DateTime.now().toLocal().day} ${months[DateTime.now().toLocal().month - 1]} ${DateTime.now().toLocal().year}';

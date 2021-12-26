@@ -9,9 +9,6 @@ class FlutterFlowTheme {
   static const Color darkerPrimaryBlue = Color(0xFFade8f4);
   static const Color moreDarkerPrimaryBlue = Color(0xFF90e0ef);
 
-
-  
-
   String primaryFontFamily = 'Poppins';
   String secondaryFontFamily = 'Roboto';
   static TextStyle get title1 => GoogleFonts.getFont(
@@ -48,7 +45,7 @@ class FlutterFlowTheme {
         'Poppins',
         color: tertiaryColor,
         fontWeight: FontWeight.normal,
-        fontSize: 14,
+        fontSize: 12,
       );
   static TextStyle get bodyText2 => GoogleFonts.getFont(
         'Poppins',

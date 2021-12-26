@@ -4,8 +4,10 @@ import 'package:prayer_times_project/components/namaz_vakitleri_text_widget.dart
 import 'package:prayer_times_project/components/sections_widget.dart';
 import 'package:prayer_times_project/screens/home_page/components/countdown_text_widget.dart';
 import 'package:prayer_times_project/screens/home_page/constants/prayer_times_constants.dart';
+import 'package:prayer_times_project/services/extensions/string_extension.dart';
 import 'package:prayer_times_project/services/flutter_flow_theme.dart';
 import 'package:prayer_times_project/services/local_notification_service.dart';
+import 'package:prayer_times_project/services/locale_keys.g.dart';
 import 'package:prayer_times_project/services/location_service.dart';
 import 'package:geocoding/geocoding.dart';
 import '../compass_page/compass_page_widget.dart';
@@ -24,8 +26,10 @@ class HomePageWidget extends StatefulWidget {
 class _HomePageWidgetState extends State<HomePageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   String nameOfCity, nameOfCountry;
+  Timer _timer;
   @override
   void initState() {
+    _timer = Timer.periodic(Duration(seconds: 1), (Timer t) => showLocation());
     buildLocationName();
     buildNotifications();
     super.initState();
@@ -145,7 +149,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                           child: AutoSizeText(
-                            'Prayer Times',
+                            LocaleKeys.menus_prayer_times.locale,
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.bodyText1.override(
                               fontFamily: 'Poppins',
@@ -158,7 +162,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
-                          vakitIsmi: 'Fajr',
+                          vakitIsmi: LocaleKeys.prayer_times_fajr.locale,
                           vakitSaati: buildTimeOfPrayer(
                               PrayerTimesConstants.prayerTimes.fajr),
                         ),
@@ -166,7 +170,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
-                          vakitIsmi: 'Sunrise',
+                          vakitIsmi: LocaleKeys.prayer_times_sunrise.locale,
                           vakitSaati: buildTimeOfPrayer(
                               PrayerTimesConstants.prayerTimes.sunrise),
                         ),
@@ -174,7 +178,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
-                          vakitIsmi: 'Dhuhr',
+                          vakitIsmi: LocaleKeys.prayer_times_dhuhr.locale,
                           vakitSaati: buildTimeOfPrayer(
                               PrayerTimesConstants.prayerTimes.dhuhr),
                         ),
@@ -182,7 +186,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
-                          vakitIsmi: 'Asr',
+                          vakitIsmi: LocaleKeys.prayer_times_asr.locale,
                           vakitSaati: buildTimeOfPrayer(
                               PrayerTimesConstants.prayerTimes.asr),
                         ),
@@ -190,7 +194,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
-                          vakitIsmi: 'Maghrib',
+                          vakitIsmi: LocaleKeys.prayer_times_maghrib.locale,
                           vakitSaati: buildTimeOfPrayer(
                               PrayerTimesConstants.prayerTimes.maghrib),
                         ),
@@ -198,7 +202,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       Expanded(
                         flex: 2,
                         child: NamazVakitleriTextWidget(
-                          vakitIsmi: 'Isha',
+                          vakitIsmi: LocaleKeys.prayer_times_isha.locale,
                           vakitSaati: buildTimeOfPrayer(
                               PrayerTimesConstants.prayerTimes.isha),
                         ),
@@ -234,7 +238,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       },
                       child: SectionsWidget(
                         image: 'assets/images/qibla-compass.png',
-                        text: 'Qibla Finder',
+                        text: LocaleKeys.menus_qibla_finder.locale,
                       ),
                     ),
                     InkWell(
@@ -248,7 +252,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       },
                       child: SectionsWidget(
                         image: 'assets/images/crescent-moon.png',
-                        text: 'Prayer Times',
+                        text: LocaleKeys.menus_prayer_times.locale,
                       ),
                     ),
                     InkWell(
@@ -262,7 +266,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       },
                       child: SectionsWidget(
                         image: 'assets/images/setting.png',
-                        text: 'Settings',
+                        text: LocaleKeys.menus_settings.locale,
                       ),
                     )
                   ],
@@ -278,30 +282,31 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   buildHeaderCardText() {
     switch (PrayerTimesConstants.prayerTimes.nextPrayer()) {
       case Prayer.fajr:
-        return 'Fajr ' +
+        return '${LocaleKeys.prayer_times_fajr.locale} ' +
             buildTimeOfPrayer(PrayerTimesConstants.prayerTimes.fajr);
         break;
       case Prayer.sunrise:
-        return 'Sunrise ' +
+        return '${LocaleKeys.prayer_times_sunrise.locale} ' +
             buildTimeOfPrayer(PrayerTimesConstants.prayerTimes.sunrise);
         break;
       case Prayer.dhuhr:
-        return 'Fajr ' +
+        return '${LocaleKeys.prayer_times_dhuhr.locale} ' +
             buildTimeOfPrayer(PrayerTimesConstants.prayerTimes.dhuhr);
         break;
       case Prayer.asr:
-        return 'Asr ' + buildTimeOfPrayer(PrayerTimesConstants.prayerTimes.asr);
+        return '${LocaleKeys.prayer_times_asr.locale} ' +
+            buildTimeOfPrayer(PrayerTimesConstants.prayerTimes.asr);
         break;
       case Prayer.maghrib:
-        return 'Maghrib ' +
+        return '${LocaleKeys.prayer_times_maghrib.locale} ' +
             buildTimeOfPrayer(PrayerTimesConstants.prayerTimes.maghrib);
         break;
       case Prayer.isha:
-        return 'Isha ' +
+        return '${LocaleKeys.prayer_times_isha.locale} ' +
             buildTimeOfPrayer(PrayerTimesConstants.prayerTimes.isha);
         break;
       default:
-        return 'Fajr ' +
+        return '${LocaleKeys.prayer_times_fajr.locale} ' +
             buildTimeOfPrayer(
                 PrayerTimesConstants.prayerTimes.fajr.add(Duration(days: 1)));
     }
@@ -324,41 +329,48 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   Future buildNotifications() async {
-    String message = 'Prayer is the most fundamental support of Islam.';
+    String message = LocaleKeys.notification_prayer_times_noti.locale;
     LocalNotificationService.scheduledNotification(
       id: 1,
-      title: 'Time For Fajr Prayer',
+      title: LocaleKeys.notification_fajr_prayer.locale,
       body: message,
       scheduledDate: PrayerTimesConstants.prayerTimes.fajr,
       payload: 'FajrTime',
     );
     LocalNotificationService.scheduledNotification(
       id: 2,
-      title: 'Time For Dhuhr Prayer',
+      title: LocaleKeys.notification_dhuhr_prayer.locale,
       body: message,
       scheduledDate: PrayerTimesConstants.prayerTimes.dhuhr,
       payload: 'DhuhrTime',
     );
     LocalNotificationService.scheduledNotification(
       id: 3,
-      title: 'Time For Asr Prayer',
+      title: LocaleKeys.notification_asr_prayer.locale,
       body: message,
       scheduledDate: PrayerTimesConstants.prayerTimes.asr,
       payload: 'AsrTime',
     );
     LocalNotificationService.scheduledNotification(
       id: 4,
-      title: 'Time For Maghrib Prayer',
+      title: LocaleKeys.notification_maghrib_prayer.locale,
       body: message,
       scheduledDate: PrayerTimesConstants.prayerTimes.maghrib,
       payload: 'MaghribTime',
     );
     LocalNotificationService.scheduledNotification(
       id: 5,
-      title: 'Time For Isha Prayer',
+      title: LocaleKeys.notification_isha_prayer.locale,
       body: message,
       scheduledDate: PrayerTimesConstants.prayerTimes.isha,
       payload: 'IshaTime',
     );
+  }
+
+  showLocation() {
+    setState(() {});
+    if (nameOfCity != null) {
+      _timer.cancel();
+    }
   }
 }

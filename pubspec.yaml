@@ -25,13 +25,12 @@ dependencies:
   auto_size_text: null
   cached_network_image: ^3.1.0
   cupertino_icons: ^1.0.0
+  easy_localization: ^3.0.0
   firebase_core: ^1.10.6
   flutter:
     sdk: flutter
   flutter_compass: ^0.7.0
   flutter_local_notifications: ^9.1.5
-  flutter_localizations:
-    sdk: flutter
   flutter_native_timezone: ^2.0.0
   font_awesome_flutter: null
   geocoding: ^2.0.1
@@ -75,6 +74,7 @@ flutter:
     - assets/audios/
     - assets/lottie_animations/
     - assets/rive_animations/
+    - assets/translations/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
