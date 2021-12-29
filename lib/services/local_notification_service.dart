@@ -11,12 +11,13 @@ class LocalNotificationService {
     final String sound = 'adhan_nassar_khatami.mp3';
     return NotificationDetails(
       android: AndroidNotificationDetails(
-        'channelId 15',
+        'channelId 16',
         'channelName',
         channelDescription: 'channelDescription',
         importance: Importance.max,
         sound: RawResourceAndroidNotificationSound(sound.split('.').first),
         enableVibration: true,
+        playSound: true,
       ),
       iOS: IOSNotificationDetails(sound: sound),
     );

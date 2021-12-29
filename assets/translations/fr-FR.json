@@ -1,0 +1,51 @@
+{
+  "general": {
+    "bismillah": "Au nom d'Allah",
+    "date": "La date",
+    "location": "La localisation",
+    "hour": "Heure",
+    "min": "min restant",
+    "no_sensor_info": "L'appareil n'a pas de capteurs.",
+    "welcome": "Bienvenue"
+  },
+  "menus": {
+    "prayer_times": "Heures de Prière",
+    "qibla_finder": "Chercheur de Qibla",
+    "settings": "Réglages"
+  },
+  "months": {
+    "apr": "Avril",
+    "aug": "Août",
+    "dec": "Déc",
+    "feb": "Févr",
+    "jan": "Janv",
+    "july": "Juil",
+    "june": "juin",
+    "mar": "Mars",
+    "may": "Mai",
+    "nov": "Nov",
+    "oct": "Oct",
+    "sept": "Sept"
+  },
+  "notification": {
+    "asr_prayer": "Temps pour la prière d'Asr",
+    "dhuhr_prayer": "Temps pour la prière de Dhuhr",
+    "fajr_prayer": "L'heure de la prière du Fajr",
+    "isha_prayer": "L'heure de la prière d'Isha",
+    "maghrib_prayer": "L'heure de la prière du Maghreb",
+    "prayer_times_noti": "La prière est le soutien le plus fondamental de l'Islam."
+  },
+  "prayer_times": {
+    "asr": "Asr",
+    "dhuhr": "Dhuhr",
+    "fajr": "Fajr",
+    "isha": "Isha",
+    "maghrib": "maghrébin",
+    "sunrise": "Lever du Soleil"
+  },
+  "settings_menu": {
+    "language_settings": "Paramètres de langue",
+    "location_services": "Services de Location",
+    "notifications": "Notifications"
+  }
+}

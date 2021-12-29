@@ -1,0 +1,51 @@
+{
+  "general": {
+    "bismillah": "Στο όνομα του Αλλάχ",
+    "date": "ημερομηνία",
+    "hour": "ώρα",
+    "location": "Τοποθεσία",
+    "min": "απομένουν λεπτά",
+    "no_sensor_info": "η συσκευή δεν έχει αισθητήρες",
+    "welcome": "Καλως ΗΡΘΑΤΕ"
+  },
+  "menus": {
+    "prayer_times": "ώρες προσευχής",
+    "qibla_finder": "ανιχνευτής qibla",
+    "settings": "Ρυθμίσεις"
+  },
+  "months": {
+    "apr": "Απρ",
+    "aug": "Αύγ",
+    "dec": "Δεκ",
+    "feb": "Φεβ",
+    "jan": "Ιαν",
+    "july": "Ιούλ",
+    "june": "Ιούν",
+    "mar": "Μάρ",
+    "may": "Μάι",
+    "nov": "Νοέ",
+    "oct": "Οκτ",
+    "sept": "Σεπ"
+  },
+  "notification": {
+    "asr_prayer": "Ώρα για προσευχή Asr",
+    "dhuhr_prayer": "Ώρα Μεσημεριανής Προσευχής",
+    "fajr_prayer": "Ώρα για την προσευχή του Fajr",
+    "isha_prayer": "Ώρα για προσευχή Isha",
+    "maghrib_prayer": "Ώρα για προσευχή του Μαγκρίμπ",
+    "prayer_times_noti": "Η προσευχή είναι το πιο θεμελιώδες στήριγμα του Ισλάμ."
+  },
+  "prayer_times": {
+    "asr": "Asr",
+    "dhuhr": "Dhuhr",
+    "fajr": "αυγή",
+    "isha": "Isha",
+    "maghrib": "μαγκρίμπ",
+    "sunrise": "Ανατολή ηλίου"
+  },
+  "settings_menu": {
+    "language_settings": "Επιλογές Γλώσσας",
+    "location_services": "Υπηρεσίες τοποθεσίας",
+    "notifications": "Ειδοποιήσεις"
+  }
+}

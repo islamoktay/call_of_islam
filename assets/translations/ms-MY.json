@@ -1,0 +1,51 @@
+{
+  "general": {
+    "bismillah": "Dengan nama Allah",
+    "date": "Tarikh",
+    "hour": "Jam",
+    "location": "Lokasi",
+    "min": "Minit Lagi",
+    "no_sensor_info": "Peranti Tidak Mempunyai Penderia",
+    "welcome": "selamat datang"
+  },
+  "menus": {
+    "prayer_times": "Waktu Solat",
+    "qibla_finder": "Pencari Kiblat",
+    "settings": "Tetapan"
+  },
+  "months": {
+    "apr": "Apr",
+    "aug": "Og",
+    "dec": "Dis",
+    "feb": "Feb",
+    "jan": "Jan",
+    "july": "Julai",
+    "june": "Jun",
+    "mar": "Mac",
+    "may": "Mei",
+    "nov": "Nov",
+    "oct": "Okt",
+    "sept": "Sept"
+  },
+  "notification": {
+    "asr_prayer": "Waktu Solat Asar",
+    "dhuhr_prayer": "Waktu Solat Dzuhur",
+    "fajr_prayer": "Waktu Solat Subuh",
+    "isha_prayer": "Waktu Solat Isyak",
+    "maghrib_prayer": "Waktu Solat Maghrib",
+    "prayer_times_noti": "Solat adalah sokongan paling asas bagi Islam."
+  },
+  "prayer_times": {
+    "asr": "Asar",
+    "dhuhr": "Dhuhur",
+    "fajr": "Fajr",
+    "isha": "Isha",
+    "maghrib": "Maghrib",
+    "sunrise": "Matahari Terbit"
+  },
+  "settings_menu": {
+    "language_settings": "Tetapan bahasa",
+    "location_services": "Perkhidmatan Lokasi",
+    "notifications": "Pemberitahuan"
+  }
+}

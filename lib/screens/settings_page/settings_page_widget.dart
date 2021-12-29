@@ -86,7 +86,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
           },
         ),
         title: Text(
-          '${LocaleKeys.menus_settings.locale} ${LocaleKeys.general_page.locale}',
+          '${LocaleKeys.menus_settings.locale}',
           style: FlutterFlowTheme.bodyText1.override(
             fontFamily: 'Lexend Deca',
             color: FlutterFlowTheme.tertiaryColor,
@@ -170,18 +170,75 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                   ),
                 ),
                 FlutterFlowDropDown(
-                  options: ['Türkçe', 'English'].toList(),
+                  options: [
+                    'Türkçe',
+                    'English',
+                    'Deutsch',
+                    'Ελληνικά',
+                    'Français',
+                    'İtaliano',
+                    'Bahasa Indonesia',
+                    'Melayu',
+                    'नमस्ते: हिंदी',
+                    'Español',
+                    'Português',
+                  ].toList(),
                   onChanged: (String newValue) {
                     setState(() {
                       if (newValue == 'English') {
                         this.setState(() {
                           context.setLocale(Locale('en', 'US'));
-                          dropDownValue = "English";
+                          dropDownValue = 'English';
                         });
                       } else if (newValue == 'Türkçe') {
                         this.setState(() {
                           context.setLocale(Locale('tr', 'TR'));
-                          dropDownValue = "Türkçe";
+                          dropDownValue = 'Türkçe';
+                        });
+                      } else if (newValue == 'Deutsch') {
+                        this.setState(() {
+                          context.setLocale(Locale('de', 'DE'));
+                          dropDownValue = 'Deutsch';
+                        });
+                      } else if (newValue == 'Ελληνικά') {
+                        this.setState(() {
+                          context.setLocale(Locale('el', 'GR'));
+                          dropDownValue = 'Ελληνικά';
+                        });
+                      } else if (newValue == 'Français') {
+                        this.setState(() {
+                          context.setLocale(Locale('fr', 'FR'));
+                          dropDownValue = 'Français';
+                        });
+                      } else if (newValue == 'İtaliano') {
+                        this.setState(() {
+                          context.setLocale(Locale('it', 'IT'));
+                          dropDownValue = 'İtaliano';
+                        });
+                      } else if (newValue == 'Bahasa Indonesia') {
+                        this.setState(() {
+                          context.setLocale(Locale('id', 'ID'));
+                          dropDownValue = 'Bahasa Indonesia';
+                        });
+                      } else if (newValue == 'Melayu') {
+                        this.setState(() {
+                          context.setLocale(Locale('ms', 'MY'));
+                          dropDownValue = 'Melayu';
+                        });
+                      } else if (newValue == 'नमस्ते: हिंदी') {
+                        this.setState(() {
+                          context.setLocale(Locale('hi', 'IN'));
+                          dropDownValue = 'नमस्ते: हिंदी';
+                        });
+                      } else if (newValue == 'Español') {
+                        this.setState(() {
+                          context.setLocale(Locale('es', 'ES'));
+                          dropDownValue = 'Español';
+                        });
+                      } else if (newValue == 'Português') {
+                        this.setState(() {
+                          context.setLocale(Locale('pt', 'PT'));
+                          dropDownValue = 'Português';
                         });
                       }
                     });

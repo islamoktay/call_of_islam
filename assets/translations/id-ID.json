@@ -1,0 +1,51 @@
+{
+  "general": {
+    "bismillah": "Dengan nama Allah",
+    "date": "Tanggal",
+    "hour": "Jam",
+    "location": "Lokasi",
+    "min": "Menit Tersisa",
+    "no_sensor_info": "Perangkat Tidak Memiliki Sensor",
+    "welcome": "Selamat datang"
+  },
+  "menus": {
+    "prayer_times": "Waktu Sholat",
+    "qibla_finder": "Pencari Kiblat",
+    "settings": "Pengaturan"
+  },
+  "months": {
+    "apr": "Apr",
+    "aug": "Ag",
+    "dec": "Des",
+    "feb": "Peb",
+    "jan": "Djan",
+    "july": "Djuli",
+    "june": "Djuni",
+    "mar": "Mrt",
+    "may": "Mei",
+    "nov": "Nop",
+    "oct": "Okt",
+    "sept": "Sept"
+  },
+  "notification": {
+    "asr_prayer": "Waktu Sholat Ashar",
+    "dhuhr_prayer": "Waktu Sholat Dzuhur",
+    "fajr_prayer": "Waktu Sholat Subuh",
+    "isha_prayer": "Waktu Sholat Isya",
+    "maghrib_prayer": "Waktu Sholat Maghrib",
+    "prayer_times_noti": "Doa adalah dukungan paling mendasar dari Islam."
+  },
+  "prayer_times": {
+    "asr": "Asr",
+    "dhuhr": "Dhuhr",
+    "fajr": "Fajar",
+    "isha": "Isha",
+    "maghrib": "Maghrib",
+    "sunrise": "Matahari Terbit"
+  },
+  "settings_menu": {
+    "language_settings": "Pengaturan Bahasa",
+    "location_services": "Layanan Lokasi",
+    "notifications": "Pemberitahuan"
+  }
+}

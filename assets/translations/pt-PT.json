@@ -1,0 +1,51 @@
+{
+  "general": {
+    "bismillah": "Em nome de Alá",
+    "date": "Encontro",
+    "hour": "Hora",
+    "location": "Localização",
+    "min": "Min Restante",
+    "no_sensor_info": "Dispositivo não tem sensores.",
+    "welcome": "Bem vinda"
+  },
+  "menus": {
+    "prayer_times": "Tempos de Oração",
+    "qibla_finder": "Localizador de Qibla",
+    "settings": "Configurações"
+  },
+  "months": {
+    "apr": "Abril",
+    "aug": "Agosto",
+    "dec": "Dez",
+    "feb": "Fev",
+    "jan": "Jan",
+    "july": "Julho",
+    "june": "Junho",
+    "mar": "Março",
+    "may": "Maio",
+    "nov": "Nov",
+    "oct": "Out",
+    "sept": "Set"
+  },
+  "notification": {
+    "asr_prayer": "Hora da oração Asr",
+    "dhuhr_prayer": "Hora da oração Dhuhr",
+    "fajr_prayer": "Hora da oração de Fajr",
+    "isha_prayer": "Hora da oração Isha",
+    "maghrib_prayer": "Hora da oração do Magreb",
+    "prayer_times_noti": "A oração é o apoio mais fundamental do Islamismo."
+  },
+  "prayer_times": {
+    "asr": "Asr",
+    "dhuhr": "Dhuhr",
+    "fajr": "Fajr",
+    "isha": "Isha",
+    "maghrib": "Maghrib",
+    "sunrise": "Nascer do Sol"
+  },
+  "settings_menu": {
+    "language_settings": "Configurações de linguagem",
+    "location_services": "Serviços de Localização",
+    "notifications": "Notificações"
+  }
+}

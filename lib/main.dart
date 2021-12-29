@@ -7,8 +7,17 @@ Future<void> main() async {
   await EasyLocalization.ensureInitialized();
   runApp(EasyLocalization(
     supportedLocales: [
-      Locale('en', 'US'),
-      Locale('tr', 'TR'),
+      Locale('en', 'US'), //english
+      Locale('tr', 'TR'), //türkçe
+      Locale('de', 'DE'), //deutcsh
+      Locale('el', 'GR'), //greek
+      Locale('fr', 'FR'), //french
+      Locale('it', 'IT'), //italian
+      Locale('id', 'ID'), //indonesian
+      Locale('ms', 'MY'), //malay
+      Locale('hi', 'IN'), //hindi
+      Locale('es', 'ES'), //spanish
+      Locale('pt', 'PT'), //portuguese
     ],
     path: 'assets/translations',
     fallbackLocale: Locale('en', 'US'),

@@ -28,11 +28,10 @@
     "hour": "Hour",
     "min": "Min Left",
     "bismillah": "In the name of Allah",
-    "welcome": "Welcome",
-    "page": "Page"
+    "welcome": "Welcome"
   },
   "menus": {
-    "qibla_finder": "Qibla Finde",
+    "qibla_finder": "Qibla Finder",
     "prayer_times": "Prayer Times",
     "settings": "Settings"
   },

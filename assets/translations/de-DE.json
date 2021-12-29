@@ -1,0 +1,51 @@
+{
+  "general": {
+    "bismillah": "Im Namen Allahs",
+    "date": "Datum",
+    "hour": "Stunde",
+    "location": "Lage",
+    "min": "Min Links",
+    "no_sensor_info": "Gerät hat keine Sensoren",
+    "welcome": "Willkommen"
+  },
+  "menus": {
+    "prayer_times": "Gebetszeiten",
+    "qibla_finder": "Qibla-Finder",
+    "settings": "Einstellungen"
+  },
+  "months": {
+    "apr": "Apr",
+    "aug": "Aug",
+    "dec": "Dez",
+    "feb": "Feb",
+    "jan": "Jan",
+    "july": "Juli",
+    "june": "Juni",
+    "mar": "Mar",
+    "may": "Mai",
+    "nov": "Nov",
+    "oct": "Okt",
+    "sept": "Sept"
+  },
+  "notification": {
+    "asr_prayer": "Zeit für das Asr-Gebet",
+    "dhuhr_prayer": "Zeit für das Dhuhr-Gebet",
+    "fajr_prayer": "Zeit für das Fajr Gebet",
+    "isha_prayer": "Zeit für das Isha-Gebet",
+    "maghrib_prayer": "Zeit für das Maghrib-Gebet",
+    "prayer_times_noti": "Das Gebet ist die wichtigste Stütze des Islam."
+  },
+  "prayer_times": {
+    "asr": "Asr",
+    "dhuhr": "Dhuhr",
+    "fajr": "Fajr",
+    "isha": "Isha",
+    "maghrib": "Maghrib",
+    "sunrise": "Sonnenaufgang"
+  },
+  "settings_menu": {
+    "language_settings": "Sprachoptionen",
+    "location_services": "Standortdienste",
+    "notifications": "Benachrichtigungen"
+  }
+}

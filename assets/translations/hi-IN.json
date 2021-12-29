@@ -1,0 +1,51 @@
+{
+  "general": {
+    "bismillah": "अल्लाह के नाम पर",
+    "date": "दिनांक",
+    "hour": "घंटा",
+    "location": "स्थान",
+    "min": "मिनट बाएं",
+    "no_sensor_info": "डिवाइस में सेंसर नहीं हैं",
+    "welcome": "स्वागत"
+  },
+  "menus": {
+    "prayer_times": "प्रार्थना का समय",
+    "qibla_finder": "किबला खोजक",
+    "settings": "समायोजन"
+  },
+  "months": {
+    "apr": "अप्रैल'",
+    "aug": "अगस्त",
+    "dec": "दिसंबर",
+    "feb": "फ़रवरी",
+    "jan": "जनवरी",
+    "july": "जुलाई",
+    "june": "जून",
+    "mar": "मार्च",
+    "may": "मई",
+    "nov": "नवंबर",
+    "oct": "अक्टूबर",
+    "sept": "सितंबर',"
+  },
+  "notification": {
+    "asr_prayer": "अस्र प्रार्थना का समय",
+    "dhuhr_prayer": "धुहर की नमाज़ का समय",
+    "fajr_prayer": "फज्र की नमाज का समय",
+    "isha_prayer": "ईशा प्रार्थना का समय",
+    "maghrib_prayer": "मगरिब की नमाज़ का समय",
+    "prayer_times_noti": "प्रार्थना इस्लाम का सबसे बुनियादी समर्थन है।"
+  },
+  "prayer_times": {
+    "asr": "अस्र",
+    "dhuhr": "धुहरी",
+    "fajr": "फज्र",
+    "isha": "ईशा",
+    "maghrib": "शाम",
+    "sunrise": "सूर्योदय"
+  },
+  "settings_menu": {
+    "language_settings": "भाषा सेटिंग्स",
+    "location_services": "स्थान सेवाएं",
+    "notifications": "सूचनाएं"
+  }
+}
