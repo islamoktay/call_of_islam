@@ -125,7 +125,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                 style: FlutterFlowTheme.title3.override(
                   fontFamily: 'Lexend Deca',
                   color: FlutterFlowTheme.tertiaryColor,
-                  fontSize: 20,
+                  fontSize: 16,
                 ),
               ),
               activeColor: FlutterFlowTheme.secondaryColor,
@@ -146,7 +146,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
               style: FlutterFlowTheme.title3.override(
                 fontFamily: 'Lexend Deca',
                 color: FlutterFlowTheme.tertiaryColor,
-                fontSize: 20,
+                fontSize: 16,
               ),
             ),
             tileColor: Color(0x004EE034),
@@ -166,7 +166,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                   LocaleKeys.settings_menu_language_settings.locale,
                   style: FlutterFlowTheme.title3.override(
                     fontFamily: 'Lexend Deca',
-                    fontSize: 20,
+                    fontSize: 16,
                   ),
                 ),
                 FlutterFlowDropDown(
