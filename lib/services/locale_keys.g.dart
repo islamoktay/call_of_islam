@@ -43,7 +43,6 @@ abstract class  LocaleKeys {
   static const settings_menu_language_settings = 'settings_menu.language_settings';
   static const settings_menu_location_services = 'settings_menu.location_services';
   static const settings_menu_notifications = 'settings_menu.notifications';
-  static const settings_menu_language = 'settings_menu.language';
   static const settings_menu = 'settings_menu';
 
 }

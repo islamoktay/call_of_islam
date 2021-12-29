@@ -2,7 +2,7 @@
   "general": {
     "bismillah": "Au nom d'Allah",
     "date": "La date",
-    "location": "La localisation",
+    "location": "Emplacement",
     "hour": "Heure",
     "min": "min restant",
     "no_sensor_info": "L'appareil n'a pas de capteurs.",
