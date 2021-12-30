@@ -1,31 +1,25 @@
-# prayer_times_project
+⭐ Star us on GitHub — it motivates me a lot!
 
-A new Flutter project.
+# Call Of Islam
 
-## Getting Started
+A simple mobile application for "Prayer Times". The project is open to progress and will be added features.
+![splash_view](https://user-images.githubusercontent.com/43931758/147733597-dd1aee45-9f4a-4638-8264-2a20e394098d.png)![home_page](https://user-images.githubusercontent.com/43931758/147733612-cb43e245-a50a-4af3-84fc-b3cf21b7c756.png)
 
-FlutterFlow projects are built to run on the Flutter _stable_ release.
 
-### IMPORTANT:
+## Main Features
 
-For projects with Firestore integration, you must first run the following commands to ensure the project compiles:
+The monthly prayer times
+![monthly_prayer_times](https://user-images.githubusercontent.com/43931758/147733745-ca35cb69-5ebf-4b5f-9473-c1db18127cff.png)
 
-```
-flutter pub get
-flutter packages pub run build_runner build --delete-conflicting-outputs
-```
 
-This command creates the generated files that parse each Record from Firestore into a schema object.
+The Qibla Finder
+![compass_page](https://user-images.githubusercontent.com/43931758/147733757-59a847b6-fd70-43eb-a904-a776d67158b0.png)
 
-### Getting started continued:
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+### How system works
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Application is going to need location of users to detect exact prayer times. Unfortunately if device does not have sensors it will not work.
+Call Of Islam also needs location for compass page to find qibla direction.
+You will be called by the most beautiful adhan sound. The beautiful voice of Nasser Al Qatami will be with you for five times a day.
+There will be other features inshaAllah.
