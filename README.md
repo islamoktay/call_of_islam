@@ -3,17 +3,17 @@
 # Call Of Islam
 
 A simple mobile application for "Prayer Times". The project is open to progress and will be added features.
-![splash_view](https://user-images.githubusercontent.com/43931758/147733597-dd1aee45-9f4a-4638-8264-2a20e394098d.png=100x)![home_page](https://user-images.githubusercontent.com/43931758/147733612-cb43e245-a50a-4af3-84fc-b3cf21b7c756.png=100x)
+![splash_view](https://user-images.githubusercontent.com/43931758/147733597-dd1aee45-9f4a-4638-8264-2a20e394098d.png){:height="50px" width="20px"}.![home_page](https://user-images.githubusercontent.com/43931758/147733612-cb43e245-a50a-4af3-84fc-b3cf21b7c756.png)
 
 
 ## Main Features
 
 The monthly prayer times
-![monthly_prayer_times](https://user-images.githubusercontent.com/43931758/147733745-ca35cb69-5ebf-4b5f-9473-c1db18127cff.png=100x)
+![monthly_prayer_times](https://user-images.githubusercontent.com/43931758/147733745-ca35cb69-5ebf-4b5f-9473-c1db18127cff.png)
 
 
 The Qibla Finder
-![compass_page](https://user-images.githubusercontent.com/43931758/147733757-59a847b6-fd70-43eb-a904-a776d67158b0.png=100x)
+![compass_page](https://user-images.githubusercontent.com/43931758/147733757-59a847b6-fd70-43eb-a904-a776d67158b0.png)
 
 
 
