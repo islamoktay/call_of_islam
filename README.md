@@ -3,7 +3,9 @@
 # Call Of Islam
 
 A simple mobile application for "Prayer Times". The project is open to progress and will be added features.
-![splash_view](https://user-images.githubusercontent.com/43931758/147733597-dd1aee45-9f4a-4638-8264-2a20e394098d.png){:height="50px" width="20px"}.![home_page](https://user-images.githubusercontent.com/43931758/147733612-cb43e245-a50a-4af3-84fc-b3cf21b7c756.png)
+<img src="https://user-images.githubusercontent.com/43931758/147733597-dd1aee45-9f4a-4638-8264-2a20e394098d.png" width="50"/>
+![splash_view](https://user-images.githubusercontent.com/43931758/147733597-dd1aee45-9f4a-4638-8264-2a20e394098d.png)
+![home_page](https://user-images.githubusercontent.com/43931758/147733612-cb43e245-a50a-4af3-84fc-b3cf21b7c756.png)
 
 
 ## Main Features
