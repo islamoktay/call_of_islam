@@ -14,7 +14,7 @@ The monthly prayer times\
 The Qibla Finder\
 <img src="https://user-images.githubusercontent.com/43931758/147733757-59a847b6-fd70-43eb-a904-a776d67158b0.png" width="200"/>
 
-### How system works\
+### How system works
 
 🤓 Application is going to need location of users to detect exact prayer times. Unfortunately if device does not have sensors it will not work.\
 🎯 Call Of Islam also needs location for compass page to find qibla direction.\
